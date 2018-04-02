@@ -1,4 +1,4 @@
-var app = angular.module("demo", []);
+var app = angular.module("kursova", []);
 
 app.controller("AppCtrl", function($scope, $http){
 
@@ -16,12 +16,12 @@ app.controller("AppCtrl", function($scope, $http){
 
 
     ///це було розкоментоване
-   /* $scope.chairs = [];
-     $http.get('/api/chairs').then(function (response){
-        $scope.chairs=response.data;
+    /$scope.kindOfSport = [];
+     $http.get('/api/kind_of_sport').then(function (response){
+        $scope.kinfOfSport=response.data;
         console.log(response);
     });
-    $scope.students = [];
+   /* $scope.students = [];
     $http.get('/api/students').then(function (response){
         //  $http.get('http://localhost:8080/api/students').then(function (response){
         $scope.students=response.data;
