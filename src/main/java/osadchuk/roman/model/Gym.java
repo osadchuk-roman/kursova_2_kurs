@@ -35,7 +35,7 @@ public class Gym {
         this.sportBuilding = sportBuilding;
     }
 
-    public boolean isPresenceOfCardioZone() {
+    public boolean getPresenceOfCardioZone() {
         return presenceOfCardioZone;
     }
 
@@ -43,7 +43,7 @@ public class Gym {
         this.presenceOfCardioZone = presenceOfCardioZone;
     }
 
-    public boolean isPresenceOfCrossfitZone() {
+    public boolean getPresenceOfCrossfitZone() {
         return presenceOfCrossfitZone;
     }
 
@@ -51,7 +51,7 @@ public class Gym {
         this.presenceOfCrossfitZone = presenceOfCrossfitZone;
     }
 
-    public boolean isPresenceOfBoxingRing() {
+    public boolean getPresenceOfBoxingRing() {
         return presenceOfBoxingRing;
     }
 

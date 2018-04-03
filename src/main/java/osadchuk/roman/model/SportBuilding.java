@@ -7,16 +7,15 @@ public class SportBuilding {
     public String phone;
     public String address;
 
+    public SportBuilding() {
+    }
+
     public SportBuilding(int id, String name, TypeOfSportBuilding typeOfSportBuilding, String phone, String address) {
         this.id = id;
         this.name = name;
         this.typeOfSportBuilding = typeOfSportBuilding;
         this.phone = phone;
         this.address = address;
-    }
-
-    public SportBuilding() {
-
     }
 
     public int getId() {

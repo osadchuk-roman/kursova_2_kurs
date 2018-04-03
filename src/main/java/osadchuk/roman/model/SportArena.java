@@ -45,7 +45,7 @@ public class SportArena {
         this.capacity = capacity;
     }
 
-    public boolean isPresenceOfGymnasticZone() {
+    public boolean getPresenceOfGymnasticZone() {
         return presenceOfGymnasticZone;
     }
 
@@ -53,7 +53,7 @@ public class SportArena {
         this.presenceOfGymnasticZone = presenceOfGymnasticZone;
     }
 
-    public boolean isPresenceOfBoxingRing() {
+    public boolean getPresenceOfBoxingRing() {
         return presenceOfBoxingRing;
     }
 
@@ -61,7 +61,7 @@ public class SportArena {
         this.presenceOfBoxingRing = presenceOfBoxingRing;
     }
 
-    public boolean isPresenceOfMatirialArtsZone() {
+    public boolean getPresenceOfMatirialArtsZone() {
         return presenceOfMatirialArtsZone;
     }
 

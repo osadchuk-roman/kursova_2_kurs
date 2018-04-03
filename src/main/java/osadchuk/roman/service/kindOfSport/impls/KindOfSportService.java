@@ -6,6 +6,7 @@ import osadchuk.roman.DAO.kindOfSport.impls.KindOfSportDAOFakeImpl;
 import osadchuk.roman.model.KindOfSport;
 import osadchuk.roman.service.kindOfSport.interfaces.IKindOfSportService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -34,7 +35,7 @@ public class KindOfSportService implements IKindOfSportService {
     }
 
     @Override
-    public List<KindOfSport> getAll() {
+    public List<KindOfSport> getAll() throws SQLException {
         return kindOfSportDAO.getAll();
     }
 }

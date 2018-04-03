@@ -7,12 +7,12 @@ public class SportCategory {
     public SportCategory() {
     }
 
-    public SportCategory(int id, String name) {
+    public SportCategory(int id, String name)
+    {
 
         this.id = id;
         this.name = name;
     }
-
     public int getId() {
         return id;
     }

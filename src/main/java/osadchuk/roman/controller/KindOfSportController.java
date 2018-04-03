@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import osadchuk.roman.model.KindOfSport;
 import osadchuk.roman.service.kindOfSport.impls.KindOfSportService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class KindOfSportController {
     KindOfSportService kindOfSportService;
 
     @RequestMapping("/kind_of_sport")
-    public List<KindOfSport> showKindsOfSport(){
+    public List<KindOfSport> showKindsOfSport() throws SQLException {
         return kindOfSportService.getAll();
     }
 

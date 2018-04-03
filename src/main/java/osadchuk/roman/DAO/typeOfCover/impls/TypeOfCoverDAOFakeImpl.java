@@ -44,7 +44,7 @@ public class TypeOfCoverDAOFakeImpl implements ITypeOfCoverDAO {
                 .findFirst()
                 .get();
         int index = dataStorage.getTypesOfCover().indexOf(typeOfCover);
-        dataStorage.getKindsOfSports().remove(index);
+        dataStorage.getTypesOfCover().remove(index);
         return typeOfCover;
     }
 

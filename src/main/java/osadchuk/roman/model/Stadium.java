@@ -53,7 +53,7 @@ public class Stadium {
         this.fieldArea = fieldArea;
     }
 
-    public boolean isPresenceOfPathForRunning() {
+    public boolean getPresenceOfPathForRunning() {
         return presenceOfPathForRunning;
     }
 
@@ -61,7 +61,7 @@ public class Stadium {
         this.presenceOfPathForRunning = presenceOfPathForRunning;
     }
 
-    public boolean isPresenceOfGymnasticZone() {
+    public boolean getPresenceOfGymnasticZone() {
         return presenceOfGymnasticZone;
     }
 

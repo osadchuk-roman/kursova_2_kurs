@@ -42,8 +42,8 @@ public class TypeOfSportBuildingDAOFakeImpl implements ITypeOfSportBuildingDAO{
                 .filter(el -> el.getId() == id)
                 .findFirst()
                 .get();
-        int index = dataStorage.getTypesOfCover().indexOf(typeOfSportBuilding);
-        dataStorage.getKindsOfSports().remove(index);
+        int index = dataStorage.getTypesOfSportBuilding().indexOf(typeOfSportBuilding);
+        dataStorage.getTypesOfSportBuilding().remove(index);
         return typeOfSportBuilding;
     }
 

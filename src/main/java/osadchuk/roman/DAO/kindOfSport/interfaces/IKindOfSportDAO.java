@@ -2,6 +2,7 @@ package osadchuk.roman.DAO.kindOfSport.interfaces;
 
 import osadchuk.roman.model.KindOfSport;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface IKindOfSportDAO {
@@ -9,5 +10,5 @@ public interface IKindOfSportDAO {
     public KindOfSport getKindOfSport(int id);
     public KindOfSport updateKindOfSport(KindOfSport kindOfSport);
     public KindOfSport deleteKindOfSport(int id);
-    public List<KindOfSport> getAll();
+    public List<KindOfSport> getAll() throws SQLException;
 }
