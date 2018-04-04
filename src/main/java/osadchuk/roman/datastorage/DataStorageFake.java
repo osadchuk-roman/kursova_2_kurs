@@ -3,12 +3,15 @@ package osadchuk.roman.datastorage;
 import org.springframework.context.annotation.Configuration;
 import osadchuk.roman.model.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Configuration
 public class DataStorageFake {
+
+
 
     public List<KindOfSport> kindsOfSports = new ArrayList<>(
             Arrays.asList(
@@ -225,17 +228,14 @@ public class DataStorageFake {
     );
     public  List<SportCategory> getSportCategories(){return sportCategories;}
 
-/*    public List<SportsmanSportCoach> sportsmanSportCoaches = new ArrayList<>(
+    public List<SportsmanSportCoach> sportsmanSportCoaches = new ArrayList<>(
             Arrays.asList(
-                    new SportsmanSportCoach(1,getSportsmen().get(0),getKindsOfSports().get(3),
-                            getSportCategories().get(3),getCoaches().get(0)),
-                    new SportsmanSportCoach(2,getSportsmen().get(1),getKindsOfSports().get(3),
-                            getSportCategories().get(2),getCoaches().get(0)),
-                    new SportsmanSportCoach(3,getSportsmen().get(2),getKindsOfSports().get(3),
-                            getSportCategories().get(2),getCoaches().get(1)),
+                    new SportsmanSportCoach(1,getSportsmen().get(0),getKindsOfSports().get(3), getSportCategories().get(3),getCoaches().get(0)),
+                    new SportsmanSportCoach(2,getSportsmen().get(1),getKindsOfSports().get(3), getSportCategories().get(2),getCoaches().get(0)),
+                    new SportsmanSportCoach(3,getSportsmen().get(2),getKindsOfSports().get(3), getSportCategories().get(2),getCoaches().get(1))
             )
     );
-    public  List<SportsmanSportCoach> getSportsmanSportCoaches(){return sportsmanSportCoaches;}*/
+    public  List<SportsmanSportCoach> getSportsmanSportCoaches(){return sportsmanSportCoaches;}
 
     public List<Organizer> organizers = new ArrayList<>(
             Arrays.asList(
@@ -254,6 +254,72 @@ public class DataStorageFake {
             )
     );
     public  List<Organizer> getOrganizes(){return organizers;}
+
+    public List<Competition> competitions = new ArrayList<>(
+            Arrays.asList(
+                    new Competition(1,"Міський турнір з боксу серед юнаків",new Date(2015-02-20),getOrganizes().get(3),
+                            getSportBuilding().get(1),getKindsOfSports().get(0)),
+                    new Competition(2,"Змагання з карате серед юнаків",new Date(2015-04-15),getOrganizes().get(3),
+                            getSportBuilding().get(2),getKindsOfSports().get(9)),
+                    new Competition(3,"Турнір за клубну першість",new Date(2015-06-01),getOrganizes().get(2),
+                            getSportBuilding().get(9),getKindsOfSports().get(11)),
+                    new Competition(4,"Турнір \"Strong hand\"",new Date(2015-06-19),getOrganizes().get(5),
+                            getSportBuilding().get(6),getKindsOfSports().get(12)),
+                    new Competition(5,"Клубний турнір з тенісу",new Date(2015-07-01),getOrganizes().get(4),
+                            getSportBuilding().get(4),getKindsOfSports().get(2))
+            )
+    );
+    public  List<Competition> getCompetitions(){return competitions;}
+
+    public List<SportBuildingSport> sportBuildingSports = new ArrayList<>(
+            Arrays.asList(
+                    new SportBuildingSport(1,getSportBuilding().get(0),getKindsOfSports().get(3)),
+                    new SportBuildingSport(2,getSportBuilding().get(1),getKindsOfSports().get(0)),
+                    new SportBuildingSport(3,getSportBuilding().get(1),getKindsOfSports().get(7)),
+                    new SportBuildingSport(4,getSportBuilding().get(1),getKindsOfSports().get(12)),
+                    new SportBuildingSport(5,getSportBuilding().get(2),getKindsOfSports().get(0)),
+                    new SportBuildingSport(6,getSportBuilding().get(2),getKindsOfSports().get(12)),
+                    new SportBuildingSport(7,getSportBuilding().get(2),getKindsOfSports().get(5)),
+                    new SportBuildingSport(8,getSportBuilding().get(2),getKindsOfSports().get(9)),
+                    new SportBuildingSport(9,getSportBuilding().get(2),getKindsOfSports().get(11)),
+                    new SportBuildingSport(10,getSportBuilding().get(3),getKindsOfSports().get(1)),
+                    new SportBuildingSport(11,getSportBuilding().get(3),getKindsOfSports().get(6)),
+                    new SportBuildingSport(12,getSportBuilding().get(4),getKindsOfSports().get(2)),
+                    new SportBuildingSport(13,getSportBuilding().get(4),getKindsOfSports().get(10)),
+                    new SportBuildingSport(14,getSportBuilding().get(5),getKindsOfSports().get(3)),
+                    new SportBuildingSport(15,getSportBuilding().get(5),getKindsOfSports().get(4)),
+                    new SportBuildingSport(16,getSportBuilding().get(6),getKindsOfSports().get(7)),
+                    new SportBuildingSport(17,getSportBuilding().get(6),getKindsOfSports().get(12)),
+                    new SportBuildingSport(18,getSportBuilding().get(7),getKindsOfSports().get(1)),
+                    new SportBuildingSport(19,getSportBuilding().get(7),getKindsOfSports().get(6)),
+                    new SportBuildingSport(20,getSportBuilding().get(8),getKindsOfSports().get(4)),
+                    new SportBuildingSport(21,getSportBuilding().get(8),getKindsOfSports().get(8)),
+                    new SportBuildingSport(22,getSportBuilding().get(9),getKindsOfSports().get(3)),
+                    new SportBuildingSport(23,getSportBuilding().get(9),getKindsOfSports().get(5)),
+                    new SportBuildingSport(24,getSportBuilding().get(9),getKindsOfSports().get(9)),
+                    new SportBuildingSport(25,getSportBuilding().get(9),getKindsOfSports().get(11))
+            )
+    );
+    public  List<SportBuildingSport> getSportBuildingSports(){return sportBuildingSports;}
+
+    public List<SportsmanCompetition> sportsmanCompetitions = new ArrayList<>(
+            Arrays.asList(
+                    new SportsmanCompetition(1,getSportsmen().get(8),getCompetitions().get(0),12),
+                    new SportsmanCompetition(2,getSportsmen().get(9),getCompetitions().get(0),11),
+                    new SportsmanCompetition(3,getSportsmen().get(10),getCompetitions().get(0),1),
+                    new SportsmanCompetition(4,getSportsmen().get(11),getCompetitions().get(0),9),
+                    new SportsmanCompetition(5,getSportsmen().get(12),getCompetitions().get(0),10),
+                    new SportsmanCompetition(6,getSportsmen().get(13),getCompetitions().get(0),8),
+                    new SportsmanCompetition(7,getSportsmen().get(14),getCompetitions().get(0),6),
+                    new SportsmanCompetition(8,getSportsmen().get(15),getCompetitions().get(0),7),
+                    new SportsmanCompetition(9,getSportsmen().get(16),getCompetitions().get(0),4),
+                    new SportsmanCompetition(10,getSportsmen().get(17),getCompetitions().get(0),5),
+                    new SportsmanCompetition(11,getSportsmen().get(18),getCompetitions().get(0),3),
+                    new SportsmanCompetition(12,getSportsmen().get(19),getCompetitions().get(0),2)
+            )
+    );
+    public  List<SportsmanCompetition> getSportsmanCompetitions(){return sportsmanCompetitions;}
+
 
 
 

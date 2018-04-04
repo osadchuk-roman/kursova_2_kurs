@@ -1,14 +1,14 @@
-var app = angular.module("kursova", []);
+var app = angular.module("kursova", [])
 
 app.controller("AppCtrl", function($scope, $http){
 
-
-    ///це було розкоментоване
-    $scope.kind_of_sport = [];
-    $http.get('http://localhost:8080/api/kind_of_sport').then(function (response){
-        $scope.kind_of_sport=response.data;
-        console.log(response);
+    $scope.competition = [];
+    $http.get('http://localhost:8080/api/competition').then(function (response){
+        $scope.competition=response.data;
+        competition.log(response);
     });
+    ///це було розкоментоване
+
 
     $scope.type_of_cover = [];
     $http.get('http://localhost:8080/api/type_of_cover').then(function (response){
@@ -88,57 +88,29 @@ app.controller("AppCtrl", function($scope, $http){
         organizer.log(response);
     });
 
+    $scope.sportsman_sport_coach = [];
+    $http.get('http://localhost:8080/api/sportsman_sport_coach').then(function (response){
+        $scope.sportsman_sport_coach=response.data;
+        sportsman_sport_coach.log(response);
+    });
 
-
-
-
-
-
-
-
-   /* $scope.students = [];
-    $http.get('/api/students').then(function (response){
-        //  $http.get('http://localhost:8080/api/students').then(function (response){
-        $scope.students=response.data;
+    $scope.kind_of_sport = [];
+    $http.get('http://localhost:8080/api/kind_of_sport').then(function (response){
+        $scope.kind_of_sport=response.data;
         console.log(response);
-    });*/
+    });
 
+    $scope.sport_building_sport = [];
+    $http.get('http://localhost:8080/api/sport_building_sport').then(function (response){
+        $scope.sport_building_sport=response.data;
+        sport_building_sport.log(response);
+    });
 
-
-
-
-
-
-
-    // this.delstud = function del(id) {
-    //     $http.get('/api/student/del?id='+id).then(function (response){
-    //         //  $http.get('http://localhost:8080/api/students').then(function (response){
-    //         // $scope.students=response.data;
-    //         window.alert('Student ' + response.data.lastName + ' ' + response.data.firstName + ' has been succesfully deleted!');
-    //         window.location.reload();
-    //     });
-    // }
-    //
-    // $scope.groups = [];
-    // $http.get('/api/groups').then(function (response){
-    //     //  $http.get('http://localhost:8080/api/students').then(function (response){
-    //     $scope.groups=response.data;
-    //     console.log(response);
-    // });
-    //
-    //*
-
-
-    ///це було розкоментоване
-    /*this.delchair = function del(id) {
-                 $http.get('/api/chair/del?id='+id).then(function (response){
-                     window.alert('Chair '  + ' ' +response.data.name + ' ' +response.data.id + ' ' +response.data.abr + ' ' +  ' has been succesfully deleted!');
-                     window.location.reload();
-                 });
-    };*/
-
-
-
-
+    $scope.sportsman_competition = [];
+    $http.get('http://localhost:8080/api/sportsman_competition').then(function (response){
+        $scope.sportsman_competition=response.data;
+        sportsman_competition.log(response);
+    });
+    
 });
 

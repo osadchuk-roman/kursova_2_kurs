@@ -1,4 +1,4 @@
-package osadchuk.roman.DAO.sportsmanCompetition;
+package osadchuk.roman.DAO.sportsmanCompetition.interfaces;
 
 import osadchuk.roman.model.SportsmanCompetition;
 

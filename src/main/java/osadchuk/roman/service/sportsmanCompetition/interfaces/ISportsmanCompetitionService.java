@@ -1,4 +1,4 @@
-package osadchuk.roman.service.sportsmanCompetition;
+package osadchuk.roman.service.sportsmanCompetition.interfaces;
 
 import osadchuk.roman.model.SportsmanCompetition;
 

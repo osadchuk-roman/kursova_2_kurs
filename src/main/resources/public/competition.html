@@ -18,23 +18,25 @@
                         <tr>
 
                             <th>Id</th>
+                            <th>Назва</th>
+                            <th>Дата проведення</th>
                             <th>Організатор</th>
                             <th>Спортивна споруда</th>
                             <th>Вид спорту</th>
-                            <th>Дата проведення</th>
 
                         </tr>
                         </thead>
                         <tbody>
 
-                        <!-- <tr ng-repeat = "item in students">
+                         <tr ng-repeat = "item in competition">
                              <td>{{item.id}}</td>
-                             <td>{{item.firstName}}</td>
-                             <td>{{item.secondName}}</td>
-                             <td>{{item.chair.name}}</td>
-                             <td><button ng-click="ctrl.delChair(item.id)">DEL</button></td>
+                             <td>{{item.name}}</td>
+                             <td>{{item.date}}</td>
+                             <td>{{item.organizer.name}}</td>
+                             <td>{{item.sportBuilding.name}}</td>
+                             <td>{{item.kindOfSport.name}}</td>
 
-                         </tr>-->
+                         </tr>
 
                         </tbody>
 
