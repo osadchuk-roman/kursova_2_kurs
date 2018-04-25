@@ -20,18 +20,47 @@ public class SportCategoryDAOFakeImpl implements ISportCategoryDAO {
     //DataStorageFake dataStorage;
 
     @Override
-    public SportCategory insertSportCategory(SportCategory sportCategory) {
-        return null;
+    public SportCategory insertSportCategory(SportCategory sportCategory) throws SQLException {
+        String sql = "INSERT INTO `information system of sports organizations`.sport_category (name) VALUES (?)";
+        PreparedStatement statement;
+        statement = dataStorage.getCon().prepareStatement(sql);
+        statement.setString(1, sportCategory.getName());
+        int rowsInserted = statement.executeUpdate();
+        statement.close();
+        if (rowsInserted>0)
+            return sportCategory;
+        else
+            return null;
     }
 
     @Override
-    public SportCategory getSportCategory(int id) {
-        return null;
+    public SportCategory getSportCategory(int id) throws SQLException {
+        List<SportCategory> list = new ArrayList<>();
+        ResultSet resultSet;
+        resultSet = dataStorage
+                .executeQuery("SELECT * FROM `information system of sports organizations`.sport_category where id="+id);
+        while (resultSet.next()){
+            list.add(new SportCategory(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name")
+            ));
+        }
+        return list.get(0);
     }
 
     @Override
-    public SportCategory updateSportCategory(SportCategory sportCategory) {
-        return null;
+    public SportCategory updateSportCategory(SportCategory sportCategory) throws SQLException {
+        String sql  ="UPDATE sport_category SET sport_category.name =?  WHERE sport_category.id=?";
+        PreparedStatement statement  =dataStorage.getCon().prepareStatement(sql);
+        statement.setString(1,sportCategory.getName());
+        statement.setInt(2,(int)sportCategory.getId());
+
+        int rowsUpdated  = statement.executeUpdate();
+        statement.close();
+        if (rowsUpdated >0)
+            return sportCategory;
+        else
+            return null;
     }
 
     @Override

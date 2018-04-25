@@ -24,4 +24,16 @@ public class SportCategoryController {
     public SportCategory delete(@RequestParam int id) throws SQLException {
         return sportCategoryService.deleteSportCategory(id);
     }
+
+    @RequestMapping("/sport_category/insert")
+    public SportCategory insert(@RequestParam String name) throws SQLException {
+        SportCategory sportCategory = new SportCategory(0,name);
+        return sportCategoryService.insertSportCategory(sportCategory);
+    }
+
+    @RequestMapping("/sport_category/update")
+    public SportCategory insert(@RequestParam int id, String name) throws SQLException {
+        SportCategory sportCategory = new SportCategory(id,name);
+        return sportCategoryService.updateSportCategory(sportCategory);
+    }
 }

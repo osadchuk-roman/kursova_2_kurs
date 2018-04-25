@@ -25,4 +25,16 @@ public class TypeOfCoverController {
     public TypeOfCover del(@RequestParam int id) throws SQLException {
         return typeOfCoverService.deleteTypeOfCover(id);
     }
+
+    @RequestMapping("/type_of_cover/insert")
+    public TypeOfCover insert(@RequestParam String name) throws SQLException {
+        TypeOfCover typeOfSportBuilding = new TypeOfCover(0,name);
+        return typeOfCoverService.insertTypeOfCover(typeOfSportBuilding);
+    }
+
+    @RequestMapping("/type_of_cover/update")
+    public TypeOfCover insert(@RequestParam int id, String name) throws SQLException {
+        TypeOfCover typeOfSportBuilding = new TypeOfCover(id,name);
+        return typeOfCoverService.updateTypeOfCover(typeOfSportBuilding);
+    }
 }

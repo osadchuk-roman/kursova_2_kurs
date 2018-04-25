@@ -23,4 +23,16 @@ public class SportClubController {
     public SportClub delete(@RequestParam int id) throws SQLException {
         return sportClubService.deleteSportClub(id);
     }
+
+    @RequestMapping("/sport_club/insert")
+    public SportClub insert(@RequestParam String name, String adminName, String phone, String address) throws SQLException {
+        SportClub sportClub = new SportClub(0,name,adminName,phone,address);
+        return sportClubService.insertSportClub(sportClub);
+    }
+
+    @RequestMapping("/sport_club/update")
+    public SportClub insert(@RequestParam int id, String name, String adminName, String phone, String address) throws SQLException {
+        SportClub sportClub = new SportClub(id,name,adminName,phone,address);
+        return sportClubService.updateSportClub(sportClub);
+    }
 }

@@ -14,17 +14,17 @@ public class SportCategoryService implements ISportCategoryService {
     @Autowired
     SportCategoryDAOFakeImpl sportCategoryDAO;
     @Override
-    public SportCategory insertSportCategory(SportCategory sportCategory) {
+    public SportCategory insertSportCategory(SportCategory sportCategory) throws SQLException {
         return sportCategoryDAO.insertSportCategory(sportCategory);
     }
 
     @Override
-    public SportCategory getSportCategory(int id) {
+    public SportCategory getSportCategory(int id) throws SQLException {
         return sportCategoryDAO.getSportCategory(id);
     }
 
     @Override
-    public SportCategory updateSportCategory(SportCategory sportCategory) {
+    public SportCategory updateSportCategory(SportCategory sportCategory) throws SQLException {
         return sportCategoryDAO.updateSportCategory(sportCategory);
     }
 

@@ -21,13 +21,13 @@ body {
 }
 
 .datagrid table td, .datagrid table th {
-    padding: 3px 10px;
+   /* padding: 3px 10px;*/
 }
 
 .datagrid table thead th {
-    background: #e8d5a0;
+    background: #93e886;
     color: #0f0f0f;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     border-left: 1px solid #0f0f0f;
 }
@@ -39,13 +39,14 @@ body {
 .datagrid table tbody td {
     color: #0f0f0f;
     border-left: 1px solid #0f0f0f;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: normal;
 }
 
 
 .datagrid table tbody tr:nth-child(even) {
-    background: #fff5d8;
+    background: #c6ffb0;
+    /*background: #fff5d8;*/
     color: #0f0f0f;
 }
 
@@ -61,4 +62,27 @@ body {
     transform:scale(1.9);
     opacity:0.9;
     cursor:pointer;
+}
+
+.btn-modal-ok{
+    background-color: #90ff7a;
+    color: white;
+    cursor:pointer;
+
+}
+
+.btn-del {
+
+    border-radius: 10px;
+    font-family: Georgia;
+    color: #ffffff;
+    font-size: 20px;
+    background: #c71818;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.btn-del:hover {
+    background: #ff0000;
+    text-decoration: none;
 }

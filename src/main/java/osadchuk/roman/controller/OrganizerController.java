@@ -25,4 +25,16 @@ public class OrganizerController {
     public Organizer delete(@RequestParam int id) throws SQLException {
         return organizerService.deleteOrganizer(id);
     }
+
+    @RequestMapping("/organizer/insert")
+    public Organizer insert(@RequestParam String name, String adminName, String phone, String address) throws SQLException {
+        Organizer organizer = new Organizer(0,name,adminName,phone,address);
+        return organizerService.insertOrganizer(organizer);
+    }
+
+    @RequestMapping("/organizer/update")
+    public Organizer insert(@RequestParam int id, String name, String adminName, String phone, String address) throws SQLException {
+        Organizer organizer = new Organizer(id,name,adminName,phone,address);
+        return organizerService.updateOrganizer(organizer);
+    }
 }

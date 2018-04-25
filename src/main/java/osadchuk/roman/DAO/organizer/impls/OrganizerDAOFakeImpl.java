@@ -57,7 +57,7 @@ public class OrganizerDAOFakeImpl implements IOrganizerDAO {
     @Override
     public Organizer updateOrganizer(Organizer organizer) throws SQLException {
         String sql  ="UPDATE organizer SET organizer.name =?, organizer.admin_name =?, " +
-                "organizer.phone =?, organizer.address =?,  WHERE organizer.id=?";
+                "organizer.phone =?, organizer.address =?  WHERE organizer.id=?";
         PreparedStatement statement  =dataStorage.getCon().prepareStatement(sql);
         statement.setString(1,organizer.getName());
         statement.setString(2,organizer.getAdminName());

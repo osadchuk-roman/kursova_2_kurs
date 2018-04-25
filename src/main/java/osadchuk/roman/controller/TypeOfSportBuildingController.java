@@ -25,4 +25,16 @@ public class TypeOfSportBuildingController {
     public TypeOfSportBuilding deleteTypesOfSportBuilding(@RequestParam int id) throws SQLException {
         return typeOfSportBuildingService.deleteTypeOfSportBuilding(id);
     }
+
+    @RequestMapping("/type_of_sport_building/insert")
+    public TypeOfSportBuilding insert(@RequestParam String name) throws SQLException {
+        TypeOfSportBuilding typeOfSportBuilding = new TypeOfSportBuilding(0,name);
+        return typeOfSportBuildingService.insertTypeOfSportBuilding(typeOfSportBuilding);
+    }
+
+    @RequestMapping("/type_of_sport_building/update")
+    public TypeOfSportBuilding insert(@RequestParam int id, String name) throws SQLException {
+        TypeOfSportBuilding typeOfSportBuilding = new TypeOfSportBuilding(id,name);
+        return typeOfSportBuildingService.updateTypeOfSportBuilding(typeOfSportBuilding);
+    }
 }

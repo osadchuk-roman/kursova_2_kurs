@@ -20,18 +20,47 @@ public class TypeOfCoverDAOFakeImpl implements ITypeOfCoverDAO {
     DataStorageJDBC dataStorage;
 
     @Override
-    public TypeOfCover insertTypeOfCover(TypeOfCover typeOfCover) {
-        return null;
+    public TypeOfCover insertTypeOfCover(TypeOfCover typeOfCover) throws SQLException {
+        String sql = "INSERT INTO `information system of sports organizations`.type_of_cover (name) VALUES (?)";
+        PreparedStatement statement;
+        statement = dataStorage.getCon().prepareStatement(sql);
+        statement.setString(1, typeOfCover.getName());
+        int rowsInserted = statement.executeUpdate();
+        statement.close();
+        if (rowsInserted>0)
+            return typeOfCover;
+        else
+            return null;
     }
 
     @Override
-    public TypeOfCover getTypeOfCover(int id) {
-        return null;
+    public TypeOfCover getTypeOfCover(int id) throws SQLException {
+        List<TypeOfCover> list = new ArrayList<>();
+        ResultSet resultSet;
+        resultSet = dataStorage
+                .executeQuery("SELECT * FROM `information system of sports organizations`.type_of_cover where id="+id);
+        while (resultSet.next()){
+            list.add(new TypeOfCover(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name")
+            ));
+        }
+        return list.get(0);
     }
 
     @Override
-    public TypeOfCover updateTypeOfCover(TypeOfCover typeOfCover) {
-        return null;
+    public TypeOfCover updateTypeOfCover(TypeOfCover typeOfCover) throws SQLException {
+        String sql  ="UPDATE type_of_cover SET type_of_cover.name =?  WHERE type_of_cover.id=?";
+        PreparedStatement statement  =dataStorage.getCon().prepareStatement(sql);
+        statement.setString(1,typeOfCover.getName());
+        statement.setInt(2,(int)typeOfCover.getId());
+
+        int rowsUpdated  = statement.executeUpdate();
+        statement.close();
+        if (rowsUpdated >0)
+            return typeOfCover;
+        else
+            return null;
     }
 
     @Override

@@ -58,7 +58,7 @@ public class SportClubDAOFakeImpl implements ISportClubDAO {
     @Override
     public SportClub updateSportClub(SportClub sportClub) throws SQLException {
         String sql  ="UPDATE sport_club SET sport_club.name =?, sport_club.admin_name =?, " +
-                "sport_club.phone =?, sport_club.address =?,  WHERE sport_club.id=?";
+                "sport_club.phone =?, sport_club.address =?  WHERE sport_club.id=?";
         PreparedStatement statement  =dataStorage.getCon().prepareStatement(sql);
         statement.setString(1,sportClub.getName());
         statement.setString(2,sportClub.getAdminName());

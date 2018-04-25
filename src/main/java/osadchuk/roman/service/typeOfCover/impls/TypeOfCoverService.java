@@ -15,17 +15,17 @@ public class TypeOfCoverService implements ITypeOfCoverService {
     TypeOfCoverDAOFakeImpl typeOfCoverDAO;
 
     @Override
-    public TypeOfCover insertTypeOfCover(TypeOfCover typeOfCover) {
+    public TypeOfCover insertTypeOfCover(TypeOfCover typeOfCover) throws SQLException {
         return typeOfCoverDAO.insertTypeOfCover(typeOfCover);
     }
 
     @Override
-    public TypeOfCover getTypeOfCover(int id) {
+    public TypeOfCover getTypeOfCover(int id) throws SQLException {
         return typeOfCoverDAO.getTypeOfCover(id);
     }
 
     @Override
-    public TypeOfCover updateTypeOfCover(TypeOfCover typeOfCover) {
+    public TypeOfCover updateTypeOfCover(TypeOfCover typeOfCover) throws SQLException {
         return typeOfCoverDAO.updateTypeOfCover(typeOfCover);
     }
 

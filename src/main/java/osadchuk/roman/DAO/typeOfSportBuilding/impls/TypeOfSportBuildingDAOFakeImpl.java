@@ -68,7 +68,8 @@ public class TypeOfSportBuildingDAOFakeImpl implements ITypeOfSportBuildingDAO{
     public TypeOfSportBuilding deleteTypeOfSportBuilding(int id) throws SQLException {
         List<TypeOfSportBuilding> list = new ArrayList<>();
         ResultSet resultSet;
-        resultSet = dataStorage.executeQuery("SELECT * FROM `information system of sports organizations`.type_of_sport_building where id="+id);
+        resultSet = dataStorage.executeQuery
+                ("SELECT * FROM `information system of sports organizations`.type_of_sport_building where id="+id);
         while (resultSet.next()){
             list.add(new TypeOfSportBuilding(
                     resultSet.getInt("id"),
