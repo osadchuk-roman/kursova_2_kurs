@@ -6,7 +6,8 @@ import osadchuk.roman.DAO.sportBuilding.interfaces.ISportBuildingDAO;
 import osadchuk.roman.DAO.sportBuildingSport.interfaces.ISportBuildingSportDAO;
 import osadchuk.roman.datastorage.DataStorageFake;
 import osadchuk.roman.datastorage.DataStorageJDBC;
-import osadchuk.roman.tempModel.SportBuilding;
+import osadchuk.roman.model.SportBuilding;
+import osadchuk.roman.model.TypeOfSportBuilding;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class SportBuildingDAOFakeImpl implements ISportBuildingDAO {
         PreparedStatement statement = dataStorage.getCon().prepareStatement(sql);
         //statement.setLong(1, kindOfSport.getId());
         statement.setString(1, sportBuilding.getName());
-        statement.setInt(2, (int)sportBuilding.getTypeOfSportBuildingId());
+        statement.setInt(2, sportBuilding.getTypeOfSportBuilding().getId());
         statement.setString(3, sportBuilding.getPhone());
         statement.setString(4, sportBuilding.getAddress());
         int rowsInserted = statement.executeUpdate();
@@ -43,14 +44,17 @@ public class SportBuildingDAOFakeImpl implements ISportBuildingDAO {
         List<SportBuilding> list = new ArrayList<>();
         ResultSet resultSet;
         resultSet = dataStorage
-                .executeQuery("SELECT * FROM `information system of sports organizations`.sport_building where id="+id);
+                .executeQuery("SELECT * FROM sport_building JOIN type_of_sport_building" +
+                        "on sport_building.type_of_sport_building_id = type_of_sport_building.id " +
+                        "WHERE sport_building.id="+id+" ORDER BY sport_building.id");
         while (resultSet.next()){
             list.add(new SportBuilding(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getInt("type_of_sport_building_id"),
-                    resultSet.getString("phone"),
-                    resultSet.getString("address")
+               resultSet.getInt(1),
+               resultSet.getString(2),
+                    new TypeOfSportBuilding(resultSet.getInt(3), resultSet.getString(6)),
+               resultSet.getString(4),
+               resultSet.getString(5)
+
             ));
         }
         return list.get(0);
@@ -59,10 +63,10 @@ public class SportBuildingDAOFakeImpl implements ISportBuildingDAO {
     @Override
     public SportBuilding updateSportBuilding(SportBuilding sportBuilding) throws SQLException {
         String sql  ="UPDATE sport_building SET sport_building.name =?, sport_building.type_of_sport_building_id =?, " +
-                "sport_building.phone =?, sport_building.address =?,  WHERE sport_building.id=?";
+                "sport_building.phone =?, sport_building.address =?  WHERE sport_building.id=?";
         PreparedStatement statement  =dataStorage.getCon().prepareStatement(sql);
         statement.setString(1,sportBuilding.getName());
-        statement.setInt(2,(int)sportBuilding.getTypeOfSportBuildingId());
+        statement.setInt(2,(int)sportBuilding.getTypeOfSportBuilding().getId());
         statement.setString(3,sportBuilding.getPhone());
         statement.setString(4,sportBuilding.getAddress());
         statement.setInt(5,(int)sportBuilding.getId());
@@ -79,17 +83,18 @@ public class SportBuildingDAOFakeImpl implements ISportBuildingDAO {
     public SportBuilding deleteSportBuilding(int id) throws SQLException {
         List<SportBuilding> list = new ArrayList<>();
         ResultSet resultSet;
-        resultSet = dataStorage.executeQuery("SELECT * FROM `information system of sports organizations`.sport_building where id="+id);
+        resultSet = dataStorage.executeQuery("SELECT * FROM sport_building JOIN type_of_sport_building " +
+                "on sport_building.type_of_sport_building_id = type_of_sport_building.id " +
+                "WHERE sport_building.id="+id);
         while (resultSet.next()){
             list.add(new SportBuilding(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getInt("type_of_sport_building_id"),
-                    resultSet.getString("phone"),
-                    resultSet.getString("address")
+                    resultSet.getInt(1),
+                    resultSet.getString(2),
+                    new TypeOfSportBuilding(resultSet.getInt(3), resultSet.getString(6)),
+                    resultSet.getString(4),
+                    resultSet.getString(5)
+
             ));
-
-
         }
         String sql = "DELETE FROM sport_building WHERE id=?";
         PreparedStatement statement = dataStorage.getCon().prepareStatement(sql);
@@ -97,24 +102,29 @@ public class SportBuildingDAOFakeImpl implements ISportBuildingDAO {
         int rowsDeleted = statement.executeUpdate();
 
 
-        /*if (rowsDeleted > 0) {
-            return kindOfSport;
-        }*/
-        return list.get(0);
+        if (rowsDeleted > 0) {
+            return list.get(0);
+        }
+        else  return null;
     }
 
     @Override
     public List<SportBuilding> getAll() throws SQLException {
         List<SportBuilding> list = new ArrayList<>();
         ResultSet resultSet;
-        resultSet = dataStorage.executeQuery("SELECT * FROM `information system of sports organizations`.sport_building");
+        resultSet = dataStorage.executeQuery("SELECT * FROM sport_building JOIN type_of_sport_building " +
+                "on sport_building.type_of_sport_building_id = type_of_sport_building.id ORDER BY sport_building.id");
         while (resultSet.next()){
             list.add(new SportBuilding(
-                    resultSet.getInt("id"),
-                    resultSet.getString("name"),
-                    resultSet.getInt("type_of_sport_building_id"),
-                    resultSet.getString("phone"),
-                    resultSet.getString("address")
+                    resultSet.getInt("sport_building.id"),
+                    resultSet.getString("sport_building.name"),
+                    new TypeOfSportBuilding(
+                            resultSet.getInt("type_of_sport_building.id"),
+                            resultSet.getString("type_of_sport_building.name")
+                    ),
+                    resultSet.getString("sport_building.phone"),
+                    resultSet.getString("sport_building.address")
+
             ));
 
 

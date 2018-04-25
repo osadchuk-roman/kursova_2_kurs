@@ -2,51 +2,166 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Спортивні споруди</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Спортивні будівлі</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body ng-app = "kursova">
-<div class="container" style="margin-top: 30px" ng-controller = "AppCtrl as ctrl" >
-    <div class="row">
-        <div class="col-md12">
-            <div class="panel panel-default">
-                <div class="panel-heading"> Спортивна споруда </div>
-                <div class="panel-body">
+<div  style="margin-top: 30px" ng-controller = "AppCtrl as ctrl" ><!--class="container"-->
+    <!--<div class="row">
+        <div class="col-md12">-->
+    <div class="container-fluid"><!--<div class="panel panel-default">-->
+        <div class="panel-heading"> Спортивні будівлі </div>
+        <div class="datagrid">
 
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
+            <table ><!--class="table table-striped"-->
+                <thead>
+                <tr>
+                    <th width="40px">Id</th>
+                    <th>Назва</th>
+                    <th>Id типу споруди</th>
+                    <!--<th>Тип споруди</th>-->
+                    <th>Телефон</th>
+                    <th>Адреса</th>
+                    <th width="80px" style="padding-left: 9px">
+                        <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
+                                style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sport_building()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
 
-                            <th>Id</th>
-                            <th>Назва</th>
-                            <th>Тип споруди</th>
-                            <th>Адреса</th>
-                            <th>Телефон</th>
+                <tbody>
+                <tr ng-repeat = "item in sport_building">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.typeOfSportBuilding.id}}</td>
+                    <!--<td>{{item.sportBuilding.name}}</td>-->
+                    <td>{{item.phone}}</td>
+                    <td>{{item.address}}</td>
+                    <td style="padding-left: 8px">
+                        <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
+                        <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
+                                ng-click="ctrl.start_update_sport_building(item.id,item.name,item.typeOfSportBuilding.id,item.phone,item.address)"
+                                style="width: 30px; cursor:pointer">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="button" class="btn-danger"
+                                ng-click="ctrl.del_sport_building(item.id)"
+                                style="width: 30px;cursor:pointer">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                        <!--<button class="btn-del">x</button>-->
+                    </td>
+                </tbody>
 
-                        </tr>
-                        </thead>
-                        <tbody>
+            </table>
+        </div>
 
-                         <tr ng-repeat = "item in sport_building">
-                             <td>{{item.id}}</td>
-                             <td>{{item.name}}</td>
-                             <!--<td>{{item.typeOfSportBuilding.name}}</td>-->
-                             <td>{{item.typeOfSportBuildingId}}</td>
-                             <td>{{item.phone}}</td>
-                             <td>{{item.address}}</td>
+        <!--додавання -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
 
-                         </tr>
-
-                        </tbody>
-
-                    </table>
+                    <div class="modal-body">
+                        <!--Введіть Id виду спорту
+                        <input type="text" id="sportId">
+                        <br><br>-->
+                        Назва спортивної споруди
+                        <br>
+                        <input type="text" id="Name">
+                        <br>
+                        Тип споруди
+                        <br>
+                        <select id="TypeOfSportBuilding">
+                        </select>
+                        <br>
+                        Телефон
+                        <br>
+                        <input type="text" id="Phone">
+                        <br>
+                        Адреса
+                        <br>
+                        <input type="text" id="Address">
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal">Закрити</button>
+                        <button type="button"  ng-click="ctrl.insert_sport_building()">Додати</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+        <!--редагування-->
+        <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Редагування запису</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Назва спортивної споруди
+                        <br>
+                        <input type="text" id="NameUPD">
+                        <br>
+                        Тип споруди
+                        <br>
+                        <select id="TypeOfSportBuildingUPD">
+                        </select>
+                        <br>
+                        Телефон
+                        <br>
+                        <input type="text" id="PhoneUPD">
+                        <br>
+                        Адреса
+                        <br>
+                        <input type="text" id="AddressUPD">
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                data-dismiss="modal">Закрити</button>
+                        <button type="button"
+                                ng-click="ctrl.update_sport_building()">Змінити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!--  </div>
+  </div>-->
+</div>
 </body>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/sport_building.js"></script>
+
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 </html>

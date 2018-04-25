@@ -1,6 +1,6 @@
 package osadchuk.roman.DAO.sportBuilding.interfaces;
 
-import osadchuk.roman.tempModel.SportBuilding;
+import osadchuk.roman.model.SportBuilding;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Спортивні клуби</title>
+    <title>Спортсмени</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
@@ -14,20 +14,21 @@
     <!--<div class="row">
         <div class="col-md12">-->
             <div class="container-fluid"><!--<div class="panel panel-default">-->
-                <div class="panel-heading"> Спортивні клуби </div>
+                <div class="panel-heading"> Спортсмени </div>
                 <div class="datagrid">
 
                     <table ><!--class="table table-striped"-->
                         <thead>
                         <tr>
                             <th width="40px">Id</th>
-                            <th>Назва</th>
-                            <th>Адміністратор</th>
-                            <th>Телефон</th>
-                            <th>Адреса</th>
+                            <th>П. І. Б.</th>
+                            <th>Вік</th>
+                            <th>Стать</th>
+                            <!--<th>Спортивний клуб</th>-->
+                            <th>Id спортивного клубу</th>
                             <th width="80px" style="padding-left: 9px">
                                 <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
-                                        style="width: 60px;cursor:pointer">
+                                        style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sportsman()">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </th>
@@ -35,20 +36,22 @@
                         </thead>
 
                         <tbody>
-                        <tr ng-repeat = "item in sport_club">
+                        <tr ng-repeat = "item in sportsman">
                             <td>{{item.id}}</td>
                             <td>{{item.name}}</td>
-                            <td>{{item.adminName}}</td>
-                            <td>{{item.phone}}</td>
-                            <td>{{item.address}}</td>
+                            <td>{{item.age}}</td>
+                            <td>{{item.gender}}</td>
+                            <td>{{item.sportClub.id}}</td>
+                            <!--<td>{{item.sportClub.name}}</td>-->
                             <td style="padding-left: 8px">
                                 <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                                 <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                        ng-click="ctrl.start_update_sport_club(item.id)"
+                                        ng-click="ctrl.start_update_sportsman(item.id,item.name,item.typeOfSportBuilding.id,item.phone,item.address)"
                                         style="width: 30px; cursor:pointer">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn-danger" ng-click="ctrl.del_sport_club(item.id)"
+                                <button type="button" class="btn-danger"
+                                        ng-click="ctrl.del_sportsman(item.id)"
                                         style="width: 30px;cursor:pointer">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
@@ -75,26 +78,31 @@
                                 <!--Введіть Id виду спорту
                                 <input type="text" id="sportId">
                                 <br><br>-->
-                                Назва спортивного клубу
+                                Прізвище та ініціали
                                 <br>
                                 <input type="text" id="Name">
                                 <br>
-                                Прізвище та ініціли адміністратора
+                                Вік
                                 <br>
-                                <input type="text" id="AdminName">
+                                <input type="text" id="Age">
                                 <br>
-                                Телефон
+                                Стать
                                 <br>
-                                <input type="text" id="Phone">
+                                <input type="text" id="Gender">
                                 <br>
-                                Адреса
+                                <!--<br>
+                                <select type = "text" id="Gender">
+                                </select>
+                                <br>-->
+                                Сортивний клуб
                                 <br>
-                                <input type="text" id="Address">
+                                <select id="SportClub">
+                                </select>
                                 <br>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" data-dismiss="modal">Закрити</button>
-                                <button type="button"  ng-click="ctrl.insert_sport_club()">Додати</button>
+                                <button type="button"  ng-click="ctrl.insert_sportsman()">Додати</button>
                             </div>
                         </div>
                     </div>
@@ -112,28 +120,33 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Назва спортивного клубу
+                                Прізвище та ініціали
                                 <br>
                                 <input type="text" id="NameUPD">
                                 <br>
-                                Прізвище та ініціли адміністратора
+                                Вік
                                 <br>
-                                <input type="text" id="AdminNameUPD">
+                                <input type="text" id="AgeUPD">
                                 <br>
-                                Телефон
                                 <br>
-                                <input type="text" id="PhoneUPD">
+                                Стать
                                 <br>
-                                Адреса
+                                <input type="text" id="GenderUPD">
                                 <br>
-                                <input type="text" id="AddressUPD">
+                                <!--<select id="GenderUPD">
+                                </select>
+                                <br>-->
+                                Сортивний клуб
+                                <br>
+                                <select id="SportClubUPD">
+                                </select>
                                 <br>
                             </div>
                             <div class="modal-footer">
                                 <button type="button"
                                         data-dismiss="modal">Закрити</button>
                                 <button type="button"
-                                        ng-click="ctrl.update_sport_club()">Змінити</button>
+                                        ng-click="ctrl.update_sportsman()">Змінити</button>
                             </div>
                         </div>
                     </div>
@@ -153,7 +166,7 @@
         crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/sport_club.js"></script>
+<script type="text/javascript" src="js/sportsman.js"></script>
 
 
 
