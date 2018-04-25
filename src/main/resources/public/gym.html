@@ -31,9 +31,9 @@
                              <td>{{item.id}}</td>
                              <td>{{item.sportBuilding.name}}</td>
                              <!--<td>{{if(item.presenceOfCardioZone)?"так":"ні"}}</td>-->
-                             <td>{{item.presenceOfCardioZone}}</td>
-                             <td>{{item.presenceOfCrossfitZone}}</td>
-                             <td>{{item.presenceOfBoxingRing}}</td>
+                             <td>{{item.presenceOfCardioZone?'Так':'Ні'}}</td>
+                             <td>{{item.presenceOfCrossfitZone?'Так':'Ні'}}</td>
+                             <td>{{item.presenceOfBoxingRing?'Так':'Ні'}}</td>
 
                          </tr>
 

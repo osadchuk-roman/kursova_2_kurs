@@ -6,6 +6,7 @@ import osadchuk.roman.DAO.typeOfCover.impls.TypeOfCoverDAOFakeImpl;
 import osadchuk.roman.model.TypeOfCover;
 import osadchuk.roman.service.typeOfCover.interfaces.ITypeOfCoverService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -29,12 +30,12 @@ public class TypeOfCoverService implements ITypeOfCoverService {
     }
 
     @Override
-    public TypeOfCover deleteTypeOfCover(int id) {
+    public TypeOfCover deleteTypeOfCover(int id) throws SQLException {
         return typeOfCoverDAO.deleteTypeOfCover(id);
     }
 
     @Override
-    public List<TypeOfCover> getAll() {
+    public List<TypeOfCover> getAll() throws SQLException {
         return typeOfCoverDAO.getAll();
     }
 }

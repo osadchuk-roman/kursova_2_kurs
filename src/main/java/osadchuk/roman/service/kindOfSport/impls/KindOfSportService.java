@@ -14,23 +14,24 @@ public class KindOfSportService implements IKindOfSportService {
     @Autowired
     KindOfSportDAOFakeImpl kindOfSportDAO;
 
+
     @Override
-    public KindOfSport insertKindOfSport(KindOfSport kindOfSport) {
+    public KindOfSport insertKindOfSport(KindOfSport kindOfSport) throws SQLException {
         return kindOfSportDAO.insertKindOfSport(kindOfSport);
     }
 
     @Override
-    public KindOfSport getKindOfSport(int id) {
+    public KindOfSport getKindOfSport(int id) throws SQLException {
         return kindOfSportDAO.getKindOfSport(id);
     }
 
     @Override
-    public KindOfSport updateKindOfSport(KindOfSport kindOfSport) {
+    public KindOfSport updateKindOfSport(KindOfSport kindOfSport) throws SQLException {
         return kindOfSportDAO.updateKindOfSport(kindOfSport);
     }
 
     @Override
-    public KindOfSport deleteKindOfSport(int id) {
+    public KindOfSport deleteKindOfSport(int id) throws SQLException {
         return kindOfSportDAO.deleteKindOfSport(id);
     }
 

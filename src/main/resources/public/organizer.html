@@ -20,8 +20,9 @@
                             <th>Id</th>
                             <th>Назва</th>
                             <th>Адміністратор</th>
-                            <th>Адреса</th>
                             <th>Телефон</th>
+                            <th>Адреса</th>
+                            <th>Дії</th>
 
                         </tr>
                         </thead>
@@ -33,7 +34,7 @@
                              <td>{{item.adminName}}</td>
                              <td>{{item.phone}}</td>
                              <td>{{item.address}}</td>
-
+                             <td><button ng-click="ctrl.del_organizer(item.id)">Видалити</button></td>
                          </tr>
 
                         </tbody>
@@ -46,6 +47,6 @@
 </div>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/organizer.js"></script>
 </body>
 </html>

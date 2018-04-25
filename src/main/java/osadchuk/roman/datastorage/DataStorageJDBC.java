@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import java.sql.*;
 @Component
 public class DataStorageJDBC {
-    /*private static final String url = "jdbc:mysql://localhost:3306/information system of sports organizations";
+    private static final String url = "jdbc:mysql://localhost:3306/information system of sports organizations";
     private static final String login = "root";
     private static final String password = "12345678";
 
@@ -28,5 +28,21 @@ public class DataStorageJDBC {
     }
 
     public DataStorageJDBC() throws SQLException {
-    }*/
+    }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
+
+    public Statement getStatement() {
+        return statement;
+    }
+
+    public void setStatement(Statement statement) {
+        this.statement = statement;
+    }
 }

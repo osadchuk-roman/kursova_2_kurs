@@ -2,6 +2,7 @@ package osadchuk.roman.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import osadchuk.roman.model.Coach;
 import osadchuk.roman.service.coach.impls.CoachService;
@@ -17,5 +18,10 @@ public class CoachController {
     @RequestMapping("/coach")
     public List<Coach> showKindsOfSport() throws SQLException {
         return coachService.getAll();
+    }
+
+    @RequestMapping("/coach/del")
+    public Coach delCoach(@RequestParam int id) throws SQLException {
+        return coachService.deleteCoach(id);
     }
 }

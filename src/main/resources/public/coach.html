@@ -20,6 +20,7 @@
                             <th>Id</th>
                             <th>П. І. Б.</th>
                             <th>Спортивний клуб</th>
+                            <th>Дії</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -28,6 +29,7 @@
                              <td>{{item.id}}</td>
                              <td>{{item.name}}</td>
                              <td>{{item.sportClub.name}}</td>
+                             <td><button ng-click="ctrl.delCoach(item.id)">del</button> </td>
 
                          </tr>
 

@@ -4,17 +4,80 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import osadchuk.roman.DAO.typeOfCover.interfaces.ITypeOfCoverDAO;
 import osadchuk.roman.datastorage.DataStorageFake;
+import osadchuk.roman.datastorage.DataStorageJDBC;
 import osadchuk.roman.model.KindOfSport;
 import osadchuk.roman.model.TypeOfCover;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class TypeOfCoverDAOFakeImpl implements ITypeOfCoverDAO {
     @Autowired
-    DataStorageFake dataStorage;
+    DataStorageJDBC dataStorage;
 
     @Override
+    public TypeOfCover insertTypeOfCover(TypeOfCover typeOfCover) {
+        return null;
+    }
+
+    @Override
+    public TypeOfCover getTypeOfCover(int id) {
+        return null;
+    }
+
+    @Override
+    public TypeOfCover updateTypeOfCover(TypeOfCover typeOfCover) {
+        return null;
+    }
+
+    @Override
+    public TypeOfCover deleteTypeOfCover(int id) throws SQLException {
+        List<TypeOfCover> list = new ArrayList<>();
+        ResultSet resultSet;
+        resultSet = dataStorage.executeQuery(
+                "SELECT * FROM `information system of sports organizations`.type_of_cover where id="+id);
+        while (resultSet.next()){
+            list.add(new TypeOfCover(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name")
+            ));
+
+
+        }
+        String sql = "DELETE FROM type_of_cover WHERE id=?";
+        PreparedStatement statement = dataStorage.getCon().prepareStatement(sql);
+        statement.setInt(1, id);
+        int rowsDeleted = statement.executeUpdate();
+
+
+        /*if (rowsDeleted > 0) {
+            return kindOfSport;
+        }*/
+        return list.get(0);
+    }
+
+    @Override
+    public List<TypeOfCover> getAll() throws SQLException {
+        List<TypeOfCover> list = new ArrayList<>();
+        ResultSet resultSet;
+        resultSet = dataStorage.executeQuery("SELECT * FROM `information system of sports organizations`.type_of_cover");
+        while (resultSet.next()){
+            list.add(new TypeOfCover(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name")
+            ));
+
+
+        }
+        return list;
+    }
+    //DataStorageFake dataStorage;
+
+    /*@Override
     public TypeOfCover insertTypeOfCover(TypeOfCover typeOfCover) {
         dataStorage.getTypesOfCover().add(typeOfCover);
         return typeOfCover;
@@ -51,5 +114,5 @@ public class TypeOfCoverDAOFakeImpl implements ITypeOfCoverDAO {
     @Override
     public List<TypeOfCover> getAll() {
         return dataStorage.getTypesOfCover();
-    }
+    }*/
 }

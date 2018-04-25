@@ -6,6 +6,7 @@ import osadchuk.roman.DAO.sportCategory.impls.SportCategoryDAOFakeImpl;
 import osadchuk.roman.model.SportCategory;
 import osadchuk.roman.service.sportCategory.interfaces.ISportCategoryService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -28,12 +29,12 @@ public class SportCategoryService implements ISportCategoryService {
     }
 
     @Override
-    public SportCategory deleteSportCategory(int id) {
+    public SportCategory deleteSportCategory(int id) throws SQLException {
         return sportCategoryDAO.deleteSportCategory(id);
     }
 
     @Override
-    public List<SportCategory> getAll() {
+    public List<SportCategory> getAll() throws SQLException {
         return sportCategoryDAO.getAll();
     }
 }

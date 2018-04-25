@@ -10,6 +10,16 @@ public class SportBuilding {
   private String phone;
   private String address;
 
+  public SportBuilding(long id, String name, long typeOfSportBuildingId, String phone, String address) {
+    this.id = id;
+    this.name = name;
+    this.typeOfSportBuildingId = typeOfSportBuildingId;
+    this.phone = phone;
+    this.address = address;
+  }
+
+  public SportBuilding(int id, String name) {
+  }
 
   public long getId() {
     return id;

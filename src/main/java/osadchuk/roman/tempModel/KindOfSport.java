@@ -7,6 +7,15 @@ public class KindOfSport {
   private long id;
   private String name;
 
+  public KindOfSport(long id) {
+    this.id = id;
+  }
+
+  public KindOfSport(long id, String name) {
+
+    this.id = id;
+    this.name = name;
+  }
 
   public long getId() {
     return id;

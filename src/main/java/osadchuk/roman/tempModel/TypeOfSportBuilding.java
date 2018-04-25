@@ -3,9 +3,18 @@ package osadchuk.roman.tempModel;
 
 public class TypeOfSportBuilding {
 
-  private long id;
+  /*private long id;
   private String name;
 
+
+  public TypeOfSportBuilding() {
+  }
+
+  public TypeOfSportBuilding(long id, String name) {
+
+    this.id = id;
+    this.name = name;
+  }
 
   public long getId() {
     return id;
@@ -23,5 +32,5 @@ public class TypeOfSportBuilding {
   public void setName(String name) {
     this.name = name;
   }
-
+*/
 }

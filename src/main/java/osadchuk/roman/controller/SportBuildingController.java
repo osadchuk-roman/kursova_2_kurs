@@ -3,9 +3,10 @@ package osadchuk.roman.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import osadchuk.roman.model.SportBuilding;
+import osadchuk.roman.tempModel.SportBuilding;
 import osadchuk.roman.service.sportBuilding.impls.SportBuildingService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class SportBuildingController {
     SportBuildingService sportBuildingService;
 
     @RequestMapping("/sport_building")
-    public List<SportBuilding> showKindsOfSport(){
+    public List<SportBuilding> showKindsOfSport() throws SQLException {
         return sportBuildingService.getAll();
     }
 }

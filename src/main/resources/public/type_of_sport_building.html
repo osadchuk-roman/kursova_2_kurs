@@ -19,6 +19,7 @@
 
                             <th>Id</th>
                             <th>Назва</th>
+                            <th>Дії</th>
 
                         </tr>
                         </thead>
@@ -27,6 +28,7 @@
                         <tr ng-repeat = "item in type_of_sport_building">
                             <td>{{item.id}}</td>
                             <td>{{item.name}}</td>
+                            <td><button ng-click="ctrl.del_type_of_sport_building(item.id)">Видалити</button></td>
 
                         </tr>
 
@@ -40,6 +42,6 @@
 </div>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/type_of_sport_building.js"></script>
 </body>
 </html>

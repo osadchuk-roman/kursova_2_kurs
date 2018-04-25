@@ -2,12 +2,13 @@ package osadchuk.roman.DAO.typeOfSportBuilding.interfaces;
 
 import osadchuk.roman.model.TypeOfSportBuilding;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ITypeOfSportBuildingDAO {
-    public TypeOfSportBuilding insertTypeOfSportBuilding(TypeOfSportBuilding typeOfSportBuilding);
-    public TypeOfSportBuilding getTypeOfSportBuilding(int id);
-    public TypeOfSportBuilding updateTypeOfSportBuilding(TypeOfSportBuilding typeOfSportBuilding);
-    public TypeOfSportBuilding deleteTypeOfSportBuilding(int id);
-    public List<TypeOfSportBuilding> getAll();
+    public TypeOfSportBuilding insertTypeOfSportBuilding(TypeOfSportBuilding typeOfSportBuilding) throws SQLException;
+    public TypeOfSportBuilding getTypeOfSportBuilding(int id) throws SQLException;
+    public TypeOfSportBuilding updateTypeOfSportBuilding(TypeOfSportBuilding typeOfSportBuilding) throws SQLException;
+    public TypeOfSportBuilding deleteTypeOfSportBuilding(int id) throws SQLException;
+    public List<TypeOfSportBuilding> getAll() throws SQLException;
 }

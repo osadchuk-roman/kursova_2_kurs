@@ -10,6 +10,17 @@ public class Organizer {
   private String phone;
   private String address;
 
+  public Organizer(long id, String name, String adminName, String phone, String address) {
+    this.id = id;
+    this.name = name;
+    this.adminName = adminName;
+    this.phone = phone;
+    this.address = address;
+  }
+
+  public Organizer() {
+
+  }
 
   public long getId() {
     return id;

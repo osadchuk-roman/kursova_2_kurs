@@ -7,6 +7,7 @@ import osadchuk.roman.datastorage.DataStorageFake;
 import osadchuk.roman.datastorage.DataStorageJDBC;
 import osadchuk.roman.model.KindOfSport;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ import java.util.List;
 @Component
 public class KindOfSportDAOFakeImpl implements IKindOfSportDAO {
     @Autowired
-    DataStorageFake dataStorage;
-    //DataStorageJDBC dataStorage;
+    //DataStorageFake dataStorage;
+    DataStorageJDBC dataStorage;
 
-    @Override
+    /*@Override
     public KindOfSport insertKindOfSport(KindOfSport kindOfSport) {
         dataStorage.getKindsOfSports().add(kindOfSport);
         return kindOfSport;
@@ -56,26 +57,76 @@ public class KindOfSportDAOFakeImpl implements IKindOfSportDAO {
     public List<KindOfSport> getAll() throws SQLException {
         return dataStorage.getKindsOfSports();
     }
+*/
 
-
-   /* @Override
-    public KindOfSport insertKindOfSport(KindOfSport kindOfSport) {
-       return null;
+    @Override
+    public KindOfSport insertKindOfSport(KindOfSport kindOfSport) throws SQLException {
+        String sql = "INSERT INTO `information system of sports organizations`.kind_of_sport (name) VALUES (?)";
+        PreparedStatement statement = dataStorage.getCon().prepareStatement(sql);
+        //statement.setLong(1, kindOfSport.getId());
+        statement.setString(1, kindOfSport.getName());
+        int rowsInserted = statement.executeUpdate();
+        statement.close();
+        if (rowsInserted>0)
+            return kindOfSport;
+        else
+            return null;
     }
 
     @Override
-    public KindOfSport getKindOfSport(int id) {
-        return null;
+    public KindOfSport getKindOfSport(int id) throws SQLException {
+        List<KindOfSport> list = new ArrayList<>();
+        ResultSet resultSet;
+        resultSet = dataStorage
+                .executeQuery("SELECT * FROM `information system of sports organizations`.kind_of_sport where id="+id);
+        while (resultSet.next()){
+            list.add(new KindOfSport(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name")
+            ));
+        }
+        return list.get(0);
     }
 
     @Override
-    public KindOfSport updateKindOfSport(KindOfSport kindOfSport) {
-        return null;
+    public KindOfSport updateKindOfSport(KindOfSport kindOfSport) throws SQLException {
+        String sql  ="UPDATE kind_of_sport SET kind_of_sport.name =?  WHERE kind_of_sport.id=?";
+        PreparedStatement statement  =dataStorage.getCon().prepareStatement(sql);
+        statement.setString(1,kindOfSport.getName());
+        statement.setInt(2,(int)kindOfSport.getId());
+
+        int rowsUpdated  = statement.executeUpdate();
+        statement.close();
+        if (rowsUpdated >0)
+            return kindOfSport;
+        else
+            return null;
     }
 
     @Override
-    public KindOfSport deleteKindOfSport(int id) {System.err.println("id = " + id);
-        return null;
+    public KindOfSport deleteKindOfSport(int id) throws SQLException {
+        List<KindOfSport> list = new ArrayList<>();
+        ResultSet resultSet;
+        resultSet = dataStorage.executeQuery(
+                "SELECT * FROM `information system of sports organizations`.kind_of_sport where id="+id);
+        while (resultSet.next()){
+            list.add(new KindOfSport(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name")
+            ));
+
+
+        }
+        String sql = "DELETE FROM kind_of_sport WHERE id=?";
+        PreparedStatement statement = dataStorage.getCon().prepareStatement(sql);
+        statement.setInt(1, id);
+        int rowsDeleted = statement.executeUpdate();
+
+
+        /*if (rowsDeleted > 0) {
+            return kindOfSport;
+        }*/
+        return list.get(0);
     }
 
     @Override
@@ -92,5 +143,5 @@ public class KindOfSportDAOFakeImpl implements IKindOfSportDAO {
 
         }
         return list;
-    }*/
+    }
 }
