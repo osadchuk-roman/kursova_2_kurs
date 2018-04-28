@@ -37,6 +37,11 @@ public class SportsmanController {
         return sportsmanService.deleteSportsman(id);
     }
 
+    @RequestMapping("/sportsman/getById")
+    public Sportsman getById(@RequestParam int id) throws SQLException {
+        return sportsmanService.getSportsman(id);
+    }
+
     @RequestMapping("/sportsman/insert")
     public Sportsman insert(@RequestParam String name,int age,String gender,int sportClubId) throws SQLException {
         SportClub sportClub = new SportClub(sportClubId,null,null,null,null);

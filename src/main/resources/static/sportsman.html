@@ -3,49 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <title>Спортсмени</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body ng-app = "kursova">
-<div class="container" style="margin-top: 30px" ng-controller = "AppCtrl as ctrl" >
-    <div class="row">
-        <div class="col-md12">
-            <div class="panel panel-default">
-                <div class="panel-heading"> Спортсмен </div>
-                <div class="panel-body">
+<div  style="margin-top: 30px" ng-controller = "AppCtrl as ctrl" ><!--class="container"-->
+    <!--<div class="row">
+        <div class="col-md12">-->
+    <div class="container-fluid"><!--<div class="panel panel-default">-->
+        <div class="panel-heading"> Спортсмени </div>
+        <div class="datagrid">
 
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
+            <table ><!--class="table table-striped"-->
+                <thead>
+                <tr>
+                    <th width="40px">Id</th>
+                    <th>П. І. Б.</th>
+                    <th>Вік</th>
+                    <th>Стать</th>
+                    <!--<th>Спортивний клуб</th>-->
+                    <th>Id спортивного клубу</th>
+                    <th width="80px" style="padding-left: 9px">
+                        <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
+                                style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sportsman()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </th>
+                </tr>
+                </thead>
 
-                            <th>Id</th>
-                            <th>П. І. Б.</th>
-                            <th>Вік</th>
-                            <th>Стать</th>
-                            <th>Спортивний клуб</th>
+                <tbody>
+                <tr ng-repeat = "item in sportsman">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.gender}}</td>
+                    <td>{{item.sportClub.id}}</td>
+                    <!--<td>{{item.sportClub.name}}</td>-->
+                    <td style="padding-left: 8px">
+                        <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
+                        <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
+                                ng-click="ctrl.start_update_sportsman(item.id,item.name,item.typeOfSportBuilding.id,item.phone,item.address)"
+                                style="width: 30px; cursor:pointer">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button type="button" class="btn-danger"
+                                ng-click="ctrl.del_sportsman(item.id)"
+                                style="width: 30px;cursor:pointer">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                        <!--<button class="btn-del">x</button>-->
+                    </td>
+                </tbody>
 
-                        </tr>
-                        </thead>
-                        <tbody>
+            </table>
+        </div>
 
-                         <tr ng-repeat = "item in sportsman">
-                             <td>{{item.id}}</td>
-                             <td>{{item.name}}</td>
-                             <td>{{item.age}}</td>
-                             <td>{{item.gender}}</td>
-                             <td>{{item.sportClub.name}}</td>
+        <!--додавання -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Додавання запису</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
 
-                         </tr>
-
-                        </tbody>
-
-                    </table>
+                    <div class="modal-body">
+                        <!--Введіть Id виду спорту
+                        <input type="text" id="sportId">
+                        <br><br>-->
+                        Прізвище та ініціали
+                        <br>
+                        <input type="text" id="Name">
+                        <br>
+                        Вік
+                        <br>
+                        <input type="text" id="Age">
+                        <br>
+                        Стать
+                        <!--<br>
+                        <input type="text" id="Gender">
+                        <br>-->
+                        <br>
+                        <select id="Gender">
+                        </select>
+                        <br>
+                        Сортивний клуб
+                        <br>
+                        <select id="SportClub">
+                        </select>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal">Закрити</button>
+                        <button type="button"  ng-click="ctrl.insert_sportsman()">Додати</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!--редагування-->
+        <div class="modal fade" id="updateModal" tabindex="-2" role="dialog" aria-labelledby="updateModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Редагування запису</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрити">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Прізвище та ініціали
+                        <br>
+                        <input type="text" id="NameUPD">
+                        <br>
+                        Вік
+                        <br>
+                        <input type="text" id="AgeUPD">
+                        <br>
+                        Стать<!--
+                        <br>
+                        <input type="text" id="GenderUPD">-->
+                        <br>
+                        <select id="GenderUPD">
+                        </select>
+                        <br>
+                        Сортивний клуб
+                        <br>
+                        <select id="SportClubUPD">
+                        </select>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"
+                                data-dismiss="modal">Закрити</button>
+                        <button type="button"
+                                ng-click="ctrl.update_sportsman()">Змінити</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
+    <!--  </div>
+  </div>-->
 </div>
+</body>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-</body>
+<script type="text/javascript" src="js/sportsman.js"></script>
+
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 </html>

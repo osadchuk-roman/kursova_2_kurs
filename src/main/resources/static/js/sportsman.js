@@ -28,18 +28,18 @@ app.controller("AppCtrl", function ($http, $scope) {
             }
         });
 
+        var selector2 = document.getElementById("Gender");
+        $(selector2).empty();
 
-        /*$http.get('/api/sportsman/gender').then(function (response){
-            var gender = response.data;
-            var selector = document.getElementById("Gender");
-            $(selector).empty();
-            for (var i = 0; i < gender.length; i++) {
-                var option = document.createElement("option");
-                option.text = gender[i].name;
-                option.value = gender[i].id;
-                selector.add(option);
-            }
-        });*/
+        var option2_1 = document.createElement("option");
+        option2_1.text = "чоловіча";
+        option2_1.value = "чоловіча";
+        selector2.add(option2_1);
+
+        var option2_2 = document.createElement("option");
+        option2_2.text = "жіноча";
+        option2_2.value = "жіноча";
+        selector2.add(option2_2);
 
 
 
@@ -50,9 +50,9 @@ app.controller("AppCtrl", function ($http, $scope) {
         var indexOfSportClub = document.getElementById("SportClub").selectedIndex;
         var sportClubId = document.getElementById("SportClub").options[indexOfSportClub].value;
         var age = document.getElementById("Age").value;
-        /*var indexOfGender = document.getElementById("Gender").selectedIndex;
-        var gender = document.getElementById("Gender").options[indexOfGender].value;*/
-        var gender = document.getElementById("Gender").value;
+        var indexOfGender = document.getElementById("Gender").selectedIndex;
+        var gender = document.getElementById("Gender").options[indexOfGender].value;
+        //var gender = document.getElementById("Gender").value;
 
         $http.get('/api/sportsman/insert?name='+name+'&age='
             +age+'&gender='+gender+'&sportClubId='+sportClubId).then(function (response){
@@ -77,10 +77,24 @@ app.controller("AppCtrl", function ($http, $scope) {
                 selector.add(option);
             }
         });
+
+
+
+        var selector2 = document.getElementById("GenderUPD");
+        $(selector2).empty();
+
+        var option2_1 = document.createElement("option");
+        option2_1.text = "чоловіча";
+        option2_1.value = "чоловіча";
+        selector2.add(option2_1);
+
+        var option2_2 = document.createElement("option");
+        option2_2.text = "жіноча";
+        option2_2.value = "жіноча";
+        selector2.add(option2_2);
         document.getElementById("nameUPD").value=name;
 
         document.getElementById("AgeUPD").value=age;
-        document.getElementById("GenderUPD").value=gender;
 
 
 
@@ -90,9 +104,9 @@ app.controller("AppCtrl", function ($http, $scope) {
         var indexOfSportClub = document.getElementById("SportClubUPD").selectedIndex;
         var sportClubId = document.getElementById("SportClubUPD").options[indexOfSportClub].value;
         var age = document.getElementById("AgeUPD").value;
-        /*var indexOfGender = document.getElementById("Gender").selectedIndex;
-        var gender = document.getElementById("Gender").options[indexOfGender].value;*/
-        var gender = document.getElementById("GenderUPD").value;
+        var indexOfGender = document.getElementById("GenderUPD").selectedIndex;
+        var gender = document.getElementById("GenderUPD").options[indexOfGender].value;
+        //var gender = document.getElementById("GenderUPD").value;
 
         $http.get('/api/sportsman/update?id='+thisId+'&name='+name+'&age='
             +age+'&gender='+gender+'&sportClubId='+sportClubId).then(function (response){

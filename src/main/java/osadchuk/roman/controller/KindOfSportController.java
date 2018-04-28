@@ -26,6 +26,11 @@ public class KindOfSportController {
         return kindOfSportService.deleteKindOfSport(id);
     }
 
+    @RequestMapping("/kind_of_sport/getById")
+    public KindOfSport getById(@RequestParam int id) throws SQLException {
+        return kindOfSportService.getKindOfSport(id);
+    }
+
     @RequestMapping("/kind_of_sport/insert")
     public KindOfSport insert(@RequestParam String name) throws SQLException {
         KindOfSport kindOfSport = new KindOfSport(0,name);

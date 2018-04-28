@@ -5,7 +5,7 @@ public class Coach {
     public String name;
     SportClub sportClub;
 
-    public Coach() {
+    public Coach(int i, Sportsman sportsman, KindOfSport kindOfSport, SportCategory sportCategory, Coach coach) {
     }
 
     public Coach(int id, String name, SportClub sportClub) {

@@ -6,6 +6,7 @@ import osadchuk.roman.DAO.sportsmanSportCoach.impls.SportsmanSportCoachDAOFakeIm
 import osadchuk.roman.model.SportsmanSportCoach;
 import osadchuk.roman.service.sportsmanSportCoach.interfaces.ISportsmanSportCoachService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -14,27 +15,27 @@ public class SportsmanSportCoachService implements ISportsmanSportCoachService {
     SportsmanSportCoachDAOFakeImpl sportsmanSportCoachDAO;
 
     @Override
-    public SportsmanSportCoach insertSportsmanSportCoach(SportsmanSportCoach sportsmanSportCoach) {
+    public SportsmanSportCoach insertSportsmanSportCoach(SportsmanSportCoach sportsmanSportCoach) throws SQLException {
         return sportsmanSportCoachDAO.insertSportsmanSportCoach(sportsmanSportCoach);
     }
 
     @Override
-    public SportsmanSportCoach getSportsmanSportCoach(int id) {
+    public SportsmanSportCoach getSportsmanSportCoach(int id) throws SQLException {
         return sportsmanSportCoachDAO.getSportsmanSportCoach(id);
     }
 
     @Override
-    public SportsmanSportCoach updateSportsmanSportCoach(SportsmanSportCoach sportsmanSportCoach) {
+    public SportsmanSportCoach updateSportsmanSportCoach(SportsmanSportCoach sportsmanSportCoach) throws SQLException {
         return sportsmanSportCoachDAO.updateSportsmanSportCoach(sportsmanSportCoach);
     }
 
     @Override
-    public SportsmanSportCoach deleteSportsmanSportCoach(int id) {
+    public SportsmanSportCoach deleteSportsmanSportCoach(int id) throws SQLException {
         return sportsmanSportCoachDAO.deleteSportsmanSportCoach(id);
     }
 
     @Override
-    public List<SportsmanSportCoach> getAll() {
+    public List<SportsmanSportCoach> getAll() throws SQLException {
         return sportsmanSportCoachDAO.getAll();
     }
 }

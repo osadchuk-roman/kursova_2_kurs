@@ -6,6 +6,7 @@ import osadchuk.roman.DAO.coach.impls.CoachDAOFakeImpl;
 import osadchuk.roman.model.Coach;
 import osadchuk.roman.service.coach.interfaces.ICoachService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -14,28 +15,28 @@ public class CoachService implements ICoachService {
     CoachDAOFakeImpl coachDAO;
 
     @Override
-    public Coach insertCoach(Coach coach) {
+    public Coach insertCoach(Coach coach) throws SQLException {
         coachDAO.insertCoach(coach);
         return coach;
     }
 
     @Override
-    public Coach getCoach(int id) {
+    public Coach getCoach(int id) throws SQLException {
         return coachDAO.getCoach(id);
     }
 
     @Override
-    public Coach updateCoach(Coach coach) {
+    public Coach updateCoach(Coach coach) throws SQLException {
         return coachDAO.updateCoach(coach);
     }
 
     @Override
-    public Coach deleteCoach(int id) {
+    public Coach deleteCoach(int id) throws SQLException {
         return coachDAO.deleteCoach(id);
     }
 
     @Override
-    public List<Coach> getAll() {
+    public List<Coach> getAll() throws SQLException {
         return coachDAO.getAll();
     }
 }
