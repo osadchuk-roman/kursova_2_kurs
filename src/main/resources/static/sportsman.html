@@ -24,8 +24,8 @@
                     <th>П. І. Б.</th>
                     <th>Вік</th>
                     <th>Стать</th>
-                    <!--<th>Спортивний клуб</th>-->
-                    <th>Id спортивного клубу</th>
+                    <th>Спортивний клуб</th>
+                    <!--<th>Id спортивного клубу</th>-->
                     <th width="80px" style="padding-left: 9px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                 style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sportsman()">
@@ -41,12 +41,13 @@
                     <td>{{item.name}}</td>
                     <td>{{item.age}}</td>
                     <td>{{item.gender}}</td>
-                    <td>{{item.sportClub.id}}</td>
-                    <!--<td>{{item.sportClub.name}}</td>-->
+                   <!-- <td>{{item.sportClub.id}}</td>-->
+                    <td>{{item.sportClub.name}}</td>
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_sportsman(item.id,item.name,item.typeOfSportBuilding.id,item.phone,item.address)"
+                                ng-click="ctrl.start_update_sportsman(item.id,item.name,item.age,item.gender,
+                                item.sportClub.name)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>

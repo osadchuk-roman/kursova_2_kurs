@@ -21,10 +21,10 @@
                 <thead>
                 <tr>
                     <th width="40px">Id</th>
-                    <!--<th>Спортивна споруда</th>
-                    <th>Вид спорту</th>-->
-                    <th>Id спортивної споруди</th>
-                    <th>Id виду спорту</th>
+                    <th>Спортивна споруда</th>
+                    <th>Вид спорту</th>
+                    <!--<th>Id спортивної споруди</th>
+                    <th>Id виду спорту</th>-->
                     <th width="80px" style="padding-left: 9px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                 style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sport_building_sport()">
@@ -37,15 +37,15 @@
                 <tbody>
                 <tr ng-repeat = "item in sport_building_sport">
                     <td>{{item.id}}</td>
-                    <!-- <td>{{item.sportBuilding.name}}</td>
-                     <td>{{item.kindOfSport.name}}</td>-->
-                    <td>{{item.sportBuilding.id}}</td>
-                    <td>{{item.kindOfSport.id}}</td>
+                     <td>{{item.sportBuilding.name}}</td>
+                     <td>{{item.kindOfSport.name}}</td>
+                    <!--<td>{{item.sportBuilding.id}}</td>
+                    <td>{{item.kindOfSport.id}}</td>-->
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
                                 ng-click="ctrl.start_update_sport_building_sport(
-                                        item.id,item.item.sportBuilding.id,item.item.kindOfSport.id)"
+                                        item.id,item.sportBuilding.name,item.kindOfSport.name)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>

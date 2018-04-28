@@ -21,14 +21,14 @@
                 <thead>
                 <tr>
                     <th width="40px">Id</th>
-                    <!--<th>Спортсмен</th>
+                    <th>Спортсмен</th>
                     <th>Вид спорту</th>
                     <th>Спортивна категорія</th>
-                    <th>Тренер</th>-->
-                    <th>Id спортсмени</th>
+                    <th>Тренер</th>
+                    <!--<th>Id спортсмени</th>
                     <th>Id виду спорту</th>
                     <th>Id спортивної категорії</th>
-                    <th>Id тренера</th>
+                    <th>Id тренера</th>-->
                     <th width="80px" style="padding-left: 9px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
                                 style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sportsman_sport_coach()">
@@ -41,20 +41,20 @@
                 <tbody>
                 <tr ng-repeat = "item in sportsman_sport_coach">
                     <td>{{item.id}}</td>
-                    <!--<td>{{item.sportsman.name}}</td>
+                    <td>{{item.sportsman.name}}</td>
                     <td>{{item.kindOfSport.name}}</td>
                     <td>{{item.sportCategory.name}}</td>
-                    <td>{{item.coach.name}}</td>-->
-                    <td>{{item.sportsman.id}}</td>
+                    <td>{{item.coach.name}}</td>
+                    <!--<td>{{item.sportsman.id}}</td>
                     <td>{{item.kindOfSport.id}}</td>
                     <td>{{item.sportCategory.id}}</td>
-                    <td>{{item.coach.id}}</td>
+                    <td>{{item.coach.id}}</td>-->
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
                                 ng-click="ctrl.start_update_sportsman_sport_coach(
-                                        item.id,item.sportsman.id,item.kindOfSport.id,
-                                        item.sportCategory.id,item.coach.id)"
+                                        item.id,item.sportsman.name,item.kindOfSport.name,
+                                        item.sportCategory.name,item.coach.name)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>

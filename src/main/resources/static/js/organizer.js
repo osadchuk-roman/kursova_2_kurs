@@ -33,8 +33,12 @@ app.controller("AppCtrl", function ($http, $scope) {
 
     };
     var thisId;
-    this.start_update_organizer = function updt(id) {
+    this.start_update_organizer = function updt(id,name,adminName,phone,address) {
         thisId=id;
+        document.getElementById("NameUPD").value=name;
+        document.getElementById("AdminNameUPD").value=adminName;
+        document.getElementById("PhoneUPD").value=phone;
+        document.getElementById("AddressUPD").value=address;
     };
     this.update_organizer = function upd() {
         var name = document.getElementById("NameUPD").value;

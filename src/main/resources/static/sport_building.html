@@ -22,8 +22,8 @@
                 <tr>
                     <th width="40px">Id</th>
                     <th>Назва</th>
-                    <th>Id типу споруди</th>
-                    <!--<th>Тип споруди</th>-->
+                    <!--<th>Id типу споруди</th>-->
+                    <th>Тип споруди</th>
                     <th>Телефон</th>
                     <th>Адреса</th>
                     <th width="80px" style="padding-left: 9px">
@@ -39,14 +39,15 @@
                 <tr ng-repeat = "item in sport_building">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.typeOfSportBuilding.id}}</td>
-                    <!--<td>{{item.sportBuilding.name}}</td>-->
+                    <!--<td>{{item.typeOfSportBuilding.id}}</td>-->
+                    <td>{{item.typeOfSportBuilding.name}}</td>
                     <td>{{item.phone}}</td>
                     <td>{{item.address}}</td>
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_sport_building(item.id,item.name,item.typeOfSportBuilding.id,item.phone,item.address)"
+                                ng-click="ctrl.start_update_sport_building(item.id,item.name,
+                                item.typeOfSportBuilding.name,item.phone,item.address)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>

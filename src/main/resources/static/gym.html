@@ -21,8 +21,8 @@
                 <thead>
                 <tr>
                     <th width="40px">Id</th>
-                    <!--<th>Спортивна споруда</th>-->
-                    <th>Id спортивної споруди</th>
+                    <th>Спортивна споруда</th>
+                    <!--<th>Id спортивної споруди</th>-->
                     <th>Наявність<br>кардіо зони</th>
                     <th>Наявність<br>кросфіт зони</th>
                     <th>Наявність<br>боксерського рингу</th>
@@ -38,16 +38,16 @@
                 <tbody>
                 <tr ng-repeat = "item in gym">
                     <td>{{item.id}}</td>
-                    <!-- <td>{{item.sportBuilding.name}}</td>-->
-                    <td>{{item.sportBuilding.id}}</td>
+                     <td>{{item.sportBuilding.name}}</td>
+                    <!--<td>{{item.sportBuilding.id}}</td>-->
                     <td>{{item.presenceOfCardioZone?'Так':'Ні'}}</td>
                     <td>{{item.presenceOfCrossfitZone?'Так':'Ні'}}</td>
                     <td>{{item.presenceOfBoxingRing?'Так':'Ні'}}</td>
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_gym(item.id,item.sportBuilding.id,item.presenceOfCardioZone,
-                                        item.presenceOfCrossfitZone,item.presenceOfBoxingRing)"
+                                ng-click="ctrl.start_update_gym(item.id,item.sportBuilding.name,
+                                item.presenceOfCardioZone,item.presenceOfCrossfitZone,item.presenceOfBoxingRing)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>

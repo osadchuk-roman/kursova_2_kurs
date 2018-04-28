@@ -62,8 +62,9 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
     var thisId;
 
-    this.start_update_sport_building_sport = function upd(id,buildingId,sportId) {
+    this.start_update_sport_building_sport = function upd(id,buildingName,sportName) {
         thisId=id;
+        var thisIndex;
         $http.get('/api/sport_building').then(function (response){
             var types = response.data;
             var selector = document.getElementById("SportBuildingUPD");
@@ -72,8 +73,13 @@ app.controller("AppCtrl", function ($http, $scope) {
                 var option = document.createElement("option");
                 option.text = types[i].name;
                 option.value = types[i].id;
+                if(types[i].name==buildingName) {
+                    thisIndex = i;
+                }
                 selector.add(option);
+                selector.selectedIndex=thisIndex;
             }
+            //document.getElementById("SportBuildingUPD").selectedIndex=thisIndex;
 
 
             $http.get('/api/kind_of_sport').then(function (response){
@@ -84,8 +90,13 @@ app.controller("AppCtrl", function ($http, $scope) {
                     var option = document.createElement("option");
                     option.text = types[i].name;
                     option.value = types[i].id;
+                    if(types[i].name==sportName) {
+                        thisIndex = i;
+                    }
                     selector.add(option);
+                    selector.selectedIndex=thisIndex;
                 }
+                //document.getElementById("SportUPD").selectedIndex=thisIndex;
             });
         });
 

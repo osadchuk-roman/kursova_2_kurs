@@ -95,9 +95,10 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
     var thisId;
 
-    this.start_update_gym = function upd(id,sportBuildingId,cardio,crossfit,box) {
+    this.start_update_gym = function upd(id,sportBuildingName,cardio,crossfit,box) {
         thisId=id;
         var thisIndex;
+        var thisId;
         $http.get('/api/sport_building').then(function (response){
             var sportBuilding = response.data;
             var selector = document.getElementById("SportBuildingUPD");
@@ -106,9 +107,16 @@ app.controller("AppCtrl", function ($http, $scope) {
                 var option = document.createElement("option");
                 option.text = sportBuilding[i].name;
                 option.value = sportBuilding[i].id;
+                if(sportBuilding[i].name==sportBuildingName){
+                    thisIndex=i;
+                    thisId=sportBuilding[i].id;
+                }
                 selector.add(option);
             }
+            document.getElementById("SportBuildingUPD").selectedIndex=thisIndex;
+
         });
+
 
         var selector2 = document.getElementById("CardioUPD");
         $(selector2).empty();
@@ -122,6 +130,8 @@ app.controller("AppCtrl", function ($http, $scope) {
         option2_2.text = "Ні";
         option2_2.value = false;
         selector2.add(option2_2);
+        if (cardio) selector2.selectedIndex=0;
+        else selector2.selectedIndex=1;
 
 
         var selector3 = document.getElementById("CrossfitUPD");
@@ -136,6 +146,8 @@ app.controller("AppCtrl", function ($http, $scope) {
         option3_2.text = "Ні";
         option3_2.value = false;
         selector3.add(option3_2);
+        if (crossfit) selector3.selectedIndex=0;
+        else selector3.selectedIndex=1;
 
 
         var selector4 = document.getElementById("BoxUPD");
@@ -150,6 +162,13 @@ app.controller("AppCtrl", function ($http, $scope) {
         option4_2.text = "Ні";
         option4_2.value = false;
         selector4.add(option4_2);
+        if (box) selector4.selectedIndex=0;
+        else selector4.selectedIndex=1;
+
+
+        document.getElementById("SportBuildingUPD").selectedIndex=thisIndex;
+        //document.getElementById("SportBuildingUPD").value=thisId;
+        //document.getElementById("SportBuildingUPD").text=sportBuildingName;
 
 
 

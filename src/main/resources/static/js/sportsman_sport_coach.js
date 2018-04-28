@@ -28,45 +28,43 @@ app.controller("AppCtrl", function ($http, $scope) {
                 option.value = sport[i].id;
                 selector.add(option);
             }
+
+            $http.get('/api/sportsman').then(function (response){
+                var sportsman = response.data;
+                var selector = document.getElementById("Sportsman");
+                $(selector).empty();
+                for (var i = 0; i < sportsman.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = sportsman[i].name;
+                    option.value = sportsman[i].id;
+                    selector.add(option);
+                }
+
+                $http.get('/api/sport_category').then(function (response){
+                    var sportCategory = response.data;
+                    var selector = document.getElementById("SportCategory");
+                    $(selector).empty();
+                    for (var i = 0; i < sportCategory.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = sportCategory[i].name;
+                        option.value = sportCategory[i].id;
+                        selector.add(option);
+                    }
+
+                    $http.get('/api/coach').then(function (response){
+                        var coach = response.data;
+                        var selector = document.getElementById("Coach");
+                        $(selector).empty();
+                        for (var i = 0; i < coach.length; i++) {
+                            var option = document.createElement("option");
+                            option.text = coach[i].name;
+                            option.value = coach[i].id;
+                            selector.add(option);
+                        }
+                    });
+                });
+            });
         });
-        $http.get('/api/sportsman').then(function (response){
-            var sportsman = response.data;
-            var selector = document.getElementById("Sportsman");
-            $(selector).empty();
-            for (var i = 0; i < sportsman.length; i++) {
-                var option = document.createElement("option");
-                option.text = sportsman[i].name;
-                option.value = sportsman[i].id;
-                selector.add(option);
-            }
-        });
-
-        $http.get('/api/sport_category').then(function (response){
-            var sportCategory = response.data;
-            var selector = document.getElementById("SportCategory");
-            $(selector).empty();
-            for (var i = 0; i < sportCategory.length; i++) {
-                var option = document.createElement("option");
-                option.text = sportCategory[i].name;
-                option.value = sportCategory[i].id;
-                selector.add(option);
-            }
-        });
-
-        $http.get('/api/coach').then(function (response){
-            var coach = response.data;
-            var selector = document.getElementById("Coach");
-            $(selector).empty();
-            for (var i = 0; i < coach.length; i++) {
-                var option = document.createElement("option");
-                option.text = coach[i].name;
-                option.value = coach[i].id;
-                selector.add(option);
-            }
-        });
-
-
-
 
     };
 
@@ -130,7 +128,8 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
     var thisId;
 
-    this.start_update_sportsman_sport_coach = function upd(id,name,age,gender,address) {
+    this.start_update_sportsman_sport_coach = function upd(id,sportsmanName,sportName,
+                                                           sportCategoryName,coachName) {
         thisId=id;
         $http.get('/api/kind_of_sport').then(function (response){
             var sport = response.data;
@@ -141,51 +140,51 @@ app.controller("AppCtrl", function ($http, $scope) {
                 option.text = sport[i].name;
                 option.value = sport[i].id;
                 selector.add(option);
+                if(sport[i].name==sportName)
+                    selector.selectedIndex=i;
             }
+            $http.get('/api/sportsman').then(function (response){
+                var sportsman = response.data;
+                var selector = document.getElementById("SportsmanUPD");
+                $(selector).empty();
+                for (var i = 0; i < sportsman.length; i++) {
+                    var option = document.createElement("option");
+                    option.text = sportsman[i].name;
+                    option.value = sportsman[i].id;
+                    selector.add(option);
+                    if(sportsman[i].name==sportsmanName)
+                        selector.selectedIndex=i;
+                }
+                $http.get('/api/sport_category').then(function (response){
+                    var sportCategory = response.data;
+                    var selector = document.getElementById("SportCategoryUPD");
+                    $(selector).empty();
+                    for (var i = 0; i < sportCategory.length; i++) {
+                        var option = document.createElement("option");
+                        option.text = sportCategory[i].name;
+                        option.value = sportCategory[i].id;
+                        selector.add(option);
+                        if(sportCategory[i].name==sportCategoryName)
+                            selector.selectedIndex=i;
+                    }
+                    $http.get('/api/coach').then(function (response){
+                        var coach = response.data;
+                        var selector = document.getElementById("CoachUPD");
+                        $(selector).empty();
+                        for (var i = 0; i < coach.length; i++) {
+                            var option = document.createElement("option");
+                            option.text = coach[i].name;
+                            option.value = coach[i].id;
+                            selector.add(option);
+                            if(coach[i].name==coachName)
+                                selector.selectedIndex=i;
+                        }
+                    });
+                });
+            });
         });
-        $http.get('/api/sportsman').then(function (response){
-            var sportsman = response.data;
-            var selector = document.getElementById("SportsmanUPD");
-            $(selector).empty();
-            for (var i = 0; i < sportsman.length; i++) {
-                var option = document.createElement("option");
-                option.text = sportsman[i].name;
-                option.value = sportsman[i].id;
-                selector.add(option);
-            }
-        });
-
-        $http.get('/api/sport_category').then(function (response){
-            var sportCategory = response.data;
-            var selector = document.getElementById("SportCategoryUPD");
-            $(selector).empty();
-            for (var i = 0; i < sportCategory.length; i++) {
-                var option = document.createElement("option");
-                option.text = sportCategory[i].name;
-                option.value = sportCategory[i].id;
-                selector.add(option);
-            }
-        });
-
-        $http.get('/api/coach').then(function (response){
-            var coach = response.data;
-            var selector = document.getElementById("CoachUPD");
-            $(selector).empty();
-            for (var i = 0; i < coach.length; i++) {
-                var option = document.createElement("option");
-                option.text = coach[i].name;
-                option.value = coach[i].id;
-                selector.add(option);
-            }
-        });
-
-
-
-
-
-
-
     };
+
     this.update_sportsman_sport_coach = function upd() {
         var indexOfSportsman = document.getElementById("SportsmanUPD").selectedIndex;
         var sportsmanId = document.getElementById("SportsmanUPD").options[indexOfSportsman].value;

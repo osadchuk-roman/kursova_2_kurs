@@ -21,8 +21,8 @@
                 <thead>
                 <tr>
                     <th width="40px">Id</th>
-                    <!--<th>Спортивна споруда</th>-->
-                    <th>Id спортивної споруди</th>
+                    <th>Спортивна споруда</th>
+                    <!--<th>Id спортивної споруди</th>-->
                     <th>Вмістимість</th>
                     <th>Площа поля</th>
                     <th>Наявність<br>доріжок для бігу</th>
@@ -39,8 +39,8 @@
                 <tbody>
                 <tr ng-repeat = "item in stadium">
                     <td>{{item.id}}</td>
-                    <!--<td>{{item.sportBuilding.name}}</td>-->
-                    <td>{{item.sportBuilding.id}}</td>
+                    <td>{{item.sportBuilding.name}}</td>
+                    <!--<td>{{item.sportBuilding.id}}</td>-->
                     <td>{{item.capacity}}</td>
                     <td>{{item.fieldArea}}</td>
                     <td>{{item.presenceOfPathForRunning?'Так':'Ні'}}</td>
@@ -48,7 +48,7 @@
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_stadium(item.id,item.sportBuilding.id
+                                ng-click="ctrl.start_update_stadium(item.id,item.sportBuilding.name
                                         ,item.capacity,item.fieldArea,
                                         item.presenceOfPathForRunning,item.presenceOfGymnasticZone)"
                                 style="width: 30px; cursor:pointer">

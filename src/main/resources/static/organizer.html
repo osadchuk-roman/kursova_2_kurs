@@ -44,7 +44,8 @@
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_organizer(item.id)"
+                                ng-click="ctrl.start_update_organizer(item.id,item.name,item.adminName,
+                                item.phone,item.address)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>

@@ -29,8 +29,9 @@ app.controller("AppCtrl", function ($http, $scope) {
 
     };
     var thisId;
-    this.start_update_type_of_cover = function updt(id) {
+    this.start_update_type_of_cover = function upd(id,name) {
         thisId=id;
+        document.getElementById("typeNameUPD").value=name;
     };
     this.update_type_of_cover = function upd() {
         var name = document.getElementById("typeNameUPD").value;

@@ -78,7 +78,7 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
     var thisId;
 
-    this.start_update_stadium = function upd(id,sportBuildingId,cardio,crossfit,box) {
+    this.start_update_stadium = function upd(id,sportBuildingName,capacity,fieldArea,path,gymnastic) {
         thisId=id;
         $http.get('/api/sport_building').then(function (response){
             var sportBuilding = response.data;
@@ -89,6 +89,8 @@ app.controller("AppCtrl", function ($http, $scope) {
                 option.text = sportBuilding[i].name;
                 option.value = sportBuilding[i].id;
                 selector.add(option);
+                if(sportBuilding[i].name==sportBuildingName)
+                    selector.selectedIndex=i;
             }
         });
 
@@ -104,6 +106,9 @@ app.controller("AppCtrl", function ($http, $scope) {
         option2_2.text = "Ні";
         option2_2.value = false;
         selector2.add(option2_2);
+        if(path) selector2.selectedIndex=0;
+        else selector2.selectedIndex=1;
+
 
 
         var selector3 = document.getElementById("GymnasticUPD");
@@ -118,7 +123,11 @@ app.controller("AppCtrl", function ($http, $scope) {
         option3_2.text = "Ні";
         option3_2.value = false;
         selector3.add(option3_2);
+        if(gymnastic) selector3.selectedIndex=0;
+        else selector3.selectedIndex=1;
 
+        document.getElementById("CapacityUPD").value=capacity;
+        document.getElementById("FieldAreaUPD").value=fieldArea;
 
 
     };

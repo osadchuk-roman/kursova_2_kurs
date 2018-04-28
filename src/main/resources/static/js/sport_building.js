@@ -50,7 +50,9 @@ app.controller("AppCtrl", function ($http, $scope) {
 
     this.start_update_sport_building = function upd(id,name,type,phone,address) {
         thisId=id;
-        var thisIndex;
+        var typeIndex;
+        var typeName;
+        var typeId;
         $http.get('/api/type_of_sport_building').then(function (response){
             var types = response.data;
             var selector = document.getElementById("TypeOfSportBuildingUPD");
@@ -59,13 +61,19 @@ app.controller("AppCtrl", function ($http, $scope) {
                 var option = document.createElement("option");
                 option.text = types[i].name;
                 option.value = types[i].id;
-                if (types[i]==type) thisIndex=i;
+                if (types[i].name==type)
+                {
+                    typeIndex=i;
+                    typeName=types[i].name;
+                    typeId=types[i].id;
+                }
                 selector.add(option);
             }
-            //document.getElementById("TypeOfSportBuildingUPD").selectedIndex = thisIndex;
-            //var typeID = document.getElementById("TypeOfSportBuildingUPD").options[indexOfType].value;
+            document.getElementById("TypeOfSportBuildingUPD").selectedIndex = typeIndex;
+            //document.getElementById("TypeOfSportBuildingUPD").options[typeIndex].value=typeId;
+            //document.getElementById("TypeOfSportBuildingUPD").options[typeIndex].text=typeName;
         });
-        document.getElementById("nameUPD").value=name;
+        document.getElementById("NameUPD").value=name;
 
         document.getElementById("PhoneUPD").value=phone;
         document.getElementById("AddressUPD").value=address;

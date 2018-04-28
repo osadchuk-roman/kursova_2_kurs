@@ -32,8 +32,9 @@ app.controller("AppCtrl", function ($http, $scope) {
 
     };
     var idSport;
-    this.start_update_kind_of_sport = function updt(id) {
+    this.start_update_kind_of_sport = function updt(id,name) {
         idSport=id;
+        document.getElementById("sportNameUPD").value=name;
     };
     this.update_kind_of_sport = function upd() {
         var name = document.getElementById("sportNameUPD").value;

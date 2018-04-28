@@ -29,8 +29,9 @@ app.controller("AppCtrl", function ($http, $scope) {
 
     };
     var thisId;
-    this.start_update_sport_category = function updt(id) {
+    this.start_update_sport_category = function upd(id,name) {
         thisId=id;
+        document.getElementById("NameUPD").value=name;
     };
     this.update_sport_category = function upd() {
         var name = document.getElementById("NameUPD").value;

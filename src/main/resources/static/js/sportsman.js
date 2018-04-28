@@ -63,7 +63,7 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
     var thisId;
 
-    this.start_update_sportsman = function upd(id,name,age,gender,address) {
+    this.start_update_sportsman = function upd(id,name,age,gender,sportClubName) {
         thisId=id;
         var thisIndex;
         $http.get('/api/sport_club').then(function (response){
@@ -74,7 +74,11 @@ app.controller("AppCtrl", function ($http, $scope) {
                 var option = document.createElement("option");
                 option.text = sportClub[i].name;
                 option.value = sportClub[i].id;
+                if(sportClub[i].name==sportClubName)
+                    thisIndex=i;
                 selector.add(option);
+                selector.selectedIndex=thisIndex;
+
             }
         });
 
@@ -87,13 +91,17 @@ app.controller("AppCtrl", function ($http, $scope) {
         option2_1.text = "чоловіча";
         option2_1.value = "чоловіча";
         selector2.add(option2_1);
+        if(option2_1.value==gender)
+            selector2.selectedIndex=0;
 
         var option2_2 = document.createElement("option");
         option2_2.text = "жіноча";
         option2_2.value = "жіноча";
         selector2.add(option2_2);
-        document.getElementById("nameUPD").value=name;
+        if(option2_2.value==gender)
+            selector2.selectedIndex=1;
 
+        document.getElementById("NameUPD").value=name;
         document.getElementById("AgeUPD").value=age;
 
 

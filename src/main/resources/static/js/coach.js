@@ -43,8 +43,10 @@ app.controller("AppCtrl", function ($http, $scope) {
     };
     var thisId;
 
-    this.start_update_coach = function upd(id,name,sportClubId) {
+    this.start_update_coach = function upd(id,name,sportClubName) {
         thisId=id;
+        var  thisIndex;
+        var  thisName;
         $http.get('/api/sport_club').then(function (response){
             var sportClub = response.data;
             var selector = document.getElementById("SportClubUPD");
@@ -53,11 +55,18 @@ app.controller("AppCtrl", function ($http, $scope) {
                 var option = document.createElement("option");
                 option.text = sportClub[i].name;
                 option.value = sportClub[i].id;
+                if(sportClub[i].name==sportClubName)
+                {
+                    thisIndex = i;
+                    thisName=sportClub[i].name;
+
+                }
                 selector.add(option);
             }
-        });
-        //document.getElementById("nameUPD").value=name;
 
+            document.getElementById("SportClubUPD").selectedIndex=thisIndex;
+        });
+        document.getElementById("NameUPD").value=name;
 
     };
     this.update_coach = function upd() {
