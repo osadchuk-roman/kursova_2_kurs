@@ -21,16 +21,16 @@
                 <thead>
                 <tr>
                     <th width="40px">Id</th>
+                    <th>Спортивна споруда</th>
+                    <th>Тип покриття</th>
                     <!--<th>Id спортивної споруди</th>
-                    <th>Тип покриття</th>-->
-                    <th>Id спортивної споруди</th>
-                    <th>Id типу покриття</th>
+                    <th>Id типу покриття</th>-->
                     <th>Ширина</th>
                     <th>Довжина</th>
 
                     <th width="80px" style="padding-left: 9px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
-                                style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sport_building_sport()">
+                                style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_court()">
                             <i class="fas fa-plus"></i>
                         </button>
                     </th>
@@ -40,22 +40,22 @@
                 <tbody>
                 <tr ng-repeat = "item in court">
                     <td>{{item.id}}</td>
-                    <td>{{item.sportBuilding.id}}</td>
-                    <td>{{item.typeOfCover.id}}</td><!--
-                             <td>{{item.sportBuilding.name}}</td>
-                             <td>{{item.typeOfCover.name}}</td>-->
+                    <!--<td>{{item.sportBuilding.id}}</td>
+                    <td>{{item.typeOfCover.id}}</td>-->
+                    <td>{{item.sportBuilding.name}}</td>
+                    <td>{{item.typeOfCover.name}}</td>
                     <td>{{item.width}}</td>
                     <td>{{item.length}}</td>
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_sport_building_sport(
-                                        item.id,item.item.sportBuilding.id,item.item.kindOfSport.id)"
+                                ng-click="ctrl.start_update_court(item.id,item.sportBuilding.name,
+                                        item.typeOfCover.name,item.width,item.length)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                         <button type="button" class="btn-danger"
-                                ng-click="ctrl.del_sport_building_sport(item.id)"
+                                ng-click="ctrl.del_court(item.id)"
                                 style="width: 30px;cursor:pointer">
                             <i class="far fa-trash-alt"></i>
                         </button>
@@ -84,15 +84,23 @@
                         <select id="SportBuilding">
                         </select>
                         <br>
-                        Вид спорту
+                        Тип покриття
                         <br>
-                        <select id="Sport">
+                        <select id="TypeOfCover">
                         </select>
+                        <br>
+                        Ширина
+                        <br>
+                        <input type="text" id="Width">
+                        <br>
+                        Довжина
+                        <br>
+                        <input type="text" id="Length">
                         <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal">Закрити</button>
-                        <button type="button"  ng-click="ctrl.insert_sport_building_sport()">Додати</button>
+                        <button type="button"  ng-click="ctrl.insert_court()">Додати</button>
                     </div>
                 </div>
             </div>
@@ -115,17 +123,26 @@
                         <select id="SportBuildingUPD">
                         </select>
                         <br>
-                        Вид спорту
+
+                        Тип покриття
                         <br>
-                        <select id="SportUPD">
+                        <select id="TypeOfCoverUPD">
                         </select>
+                        <br>
+                        Ширина
+                        <br>
+                        <input type="text" id="WidthUPD">
+                        <br>
+                        Довжина
+                        <br>
+                        <input type="text" id="LengthUPD">
                         <br>
                     </div>
                     <div class="modal-footer">
                         <button type="button"
                                 data-dismiss="modal">Закрити</button>
                         <button type="button"
-                                ng-click="ctrl.update_sport_building_sport()">Змінити</button>
+                                ng-click="ctrl.update_court()">Змінити</button>
                     </div>
                 </div>
             </div>
@@ -145,7 +162,7 @@
         crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/court.js"></script>
 
 
 

@@ -18,7 +18,7 @@ public class OrganizerController {
 
 
     @RequestMapping("/organizer")
-    public List<Organizer> show() throws SQLException {
+    public List<Organizer> getAll() throws SQLException {
         return organizerService.getAll();
     }
     @RequestMapping("/organizer/del")

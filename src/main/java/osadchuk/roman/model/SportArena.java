@@ -11,8 +11,8 @@ public class SportArena {
     public SportArena() {
     }
 
-    public SportArena(int id, SportBuilding sportBuilding, int capacity,
-                      boolean presenceOfGymnasticZone, boolean presenceOfBoxingRing, boolean presenceOfMatirialArtsZone) {
+    public SportArena(int id, SportBuilding sportBuilding, int capacity,boolean presenceOfGymnasticZone,
+                      boolean presenceOfBoxingRing, boolean presenceOfMatirialArtsZone) {
         this.id = id;
         this.sportBuilding = sportBuilding;
         this.capacity = capacity;

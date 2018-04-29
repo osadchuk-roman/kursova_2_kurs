@@ -22,16 +22,17 @@
                 <tr>
                     <th width="40px">Id</th>
                     <th>Назва</th>
-                    <th>Дата проведення</th><!--
-                            <th>Організатор</th>
-                            <th>Спортивна споруда</th>
-                            <th>Вид спорту</th>-->
-                    <th>id організатора</th>
+                    <th>Дата проведення</th>
+                    <th>Організатор</th>
+                    <th>Спортивна споруда</th>
+                    <th>Вид спорту</th>
+                    <!--<th>id організатора</th>
                     <th>Id спортивної споруди</th>
-                    <th>Id виду спорту</th>
+                    <th>Id виду спорту</th>-->
+
                     <th width="80px" style="padding-left: 9px">
                         <button type="button" class="btn-success" data-toggle="modal" data-target="#addModal"
-                                style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_sport_building_sport()">
+                                style="width: 60px;cursor:pointer" ng-click="ctrl.start_insert_competition()">
                             <i class="fas fa-plus"></i>
                         </button>
                     </th>
@@ -43,22 +44,23 @@
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.date}}</td>
-                    <td>{{item.organizer.id}}</td>
+                    <!--<td>{{item.organizer.id}}</td>
                     <td>{{item.sportBuilding.id}}</td>
-                    <td>{{item.kindOfSport.id}}</td><!--
-                             <td>{{item.organizer.name}}</td>
-                             <td>{{item.sportBuilding.name}}</td>
-                             <td>{{item.kindOfSport.name}}</td>-->
+                    <td>{{item.kindOfSport.id}}</td>-->
+                    <td>{{item.organizer.name}}</td>
+                    <td>{{item.sportBuilding.name}}</td>
+                    <td>{{item.kindOfSport.name}}</td>
                     <td style="padding-left: 8px">
                         <!--<button ng-click="ctrl.del_kind_of_sport(item.id)">Видалити</button>-->
                         <button type="button" class="btn-warning" data-toggle="modal" data-target="#updateModal"
-                                ng-click="ctrl.start_update_sport_building_sport(
-                                        item.id,item.item.sportBuilding.id,item.item.kindOfSport.id)"
+                                ng-click="ctrl.start_update_competition(item.id
+                                        ,item.name,item.date,item.organizer.name
+                                        ,item.sportBuilding.name,item.kindOfSport.name)"
                                 style="width: 30px; cursor:pointer">
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                         <button type="button" class="btn-danger"
-                                ng-click="ctrl.del_sport_building_sport(item.id)"
+                                ng-click="ctrl.del_competition(item.id)"
                                 style="width: 30px;cursor:pointer">
                             <i class="far fa-trash-alt"></i>
                         </button>
@@ -70,8 +72,8 @@
         </div>
 
         <!--додавання -->
-        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
-             aria-hidden="true">
+        <div  class="modal fade"id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -82,6 +84,19 @@
                     </div>
 
                     <div class="modal-body">
+                        Назва
+                        <br>
+                        <input type="text" id="Name">
+                        <br>
+                        Дата проведеня (рік-місяць-день)
+                        <br>
+                        <input type="text" id="Date">
+                        <br>
+                        Організатор
+                        <br>
+                        <select  style="width:470px"id="Organizer">
+                        </select>
+                        <br>
                         Спортивна споруда
                         <br>
                         <select id="SportBuilding">
@@ -95,7 +110,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" data-dismiss="modal">Закрити</button>
-                        <button type="button"  ng-click="ctrl.insert_sport_building_sport()">Додати</button>
+                        <button type="button"  ng-click="ctrl.insert_competition()">Додати</button>
                     </div>
                 </div>
             </div>
@@ -113,6 +128,19 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        Назва
+                        <br>
+                        <input type="text" id="NameUPD">
+                        <br>
+                        Дата проведеня (рік-місяць-день)
+                        <br>
+                        <input type="text" id="DateUPD">
+                        <br>
+                        Організатор
+                        <br>
+                        <select  style="width:470px"id="OrganizerUPD">
+                        </select>
+                        <br>
                         Спортивна споруда
                         <br>
                         <select id="SportBuildingUPD">
@@ -128,7 +156,7 @@
                         <button type="button"
                                 data-dismiss="modal">Закрити</button>
                         <button type="button"
-                                ng-click="ctrl.update_sport_building_sport()">Змінити</button>
+                                ng-click="ctrl.update_competition()">Змінити</button>
                     </div>
                 </div>
             </div>
@@ -148,7 +176,7 @@
         crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/competition.js"></script>
 
 
 

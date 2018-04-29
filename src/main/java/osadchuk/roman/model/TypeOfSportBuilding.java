@@ -1,6 +1,6 @@
 package osadchuk.roman.model;
 
-public class TypeOfSportBuilding extends osadchuk.roman.tempModel.TypeOfSportBuilding {
+public class TypeOfSportBuilding {
     public int id;
     public String name;
 

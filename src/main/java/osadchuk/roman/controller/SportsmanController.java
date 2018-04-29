@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import osadchuk.roman.model.Gender;
 import osadchuk.roman.model.SportClub;
 import osadchuk.roman.model.Sportsman;
 import osadchuk.roman.service.sportsman.impls.SportsmanService;
@@ -16,7 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class SportsmanController {
-    List<Gender> genders  =new ArrayList<>();
     @Autowired
     SportsmanService sportsmanService;
     @RequestMapping("/sportsman")
@@ -24,13 +22,6 @@ public class SportsmanController {
         return sportsmanService.getAll();
     }
 
-    @RequestMapping("/sportsman/gender")
-    public List<Gender> getGenders() throws SQLException {
-
-        genders.add(new Gender(1,"чоловіча"));
-        genders.add(new Gender(2,"жіноча"));
-        return genders;
-    }
 
     @RequestMapping("/sportsman/del")
     public Sportsman del(@RequestParam int id) throws SQLException {
