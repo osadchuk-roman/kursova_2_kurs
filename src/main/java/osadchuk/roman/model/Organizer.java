@@ -1,19 +1,44 @@
 package osadchuk.roman.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "organizer")
+@EntityListeners(AuditingEntityListener.class)
 public class Organizer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int id;
+
+    @Column(name = "name")
     public String name;
+
+    @Column(name = "admin_name")
     public String adminName;
+
+    @Column(name = "phone")
     public String phone;
+
+    @Column(name = "address")
     public String address;
 
-    public Organizer(int id, String name, String adminName, String phone, String address) {
-        this.id = id;
+    public Organizer(String name, String adminName, String phone, String address) {
         this.name = name;
         this.adminName = adminName;
         this.phone = phone;
         this.address = address;
     }
+
+    /*public Organizer(int id, String name, String adminName, String phone, String address) {
+        this.id = id;
+        this.name = name;
+        this.adminName = adminName;
+        this.phone = phone;
+        this.address = address;
+    }*/
 
     public Organizer() {
 

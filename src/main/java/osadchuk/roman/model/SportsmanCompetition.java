@@ -1,20 +1,36 @@
 package osadchuk.roman.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "sportsman_competition")
+@EntityListeners(AuditingEntityListener.class)
 public class SportsmanCompetition {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+    @ManyToOne
     public Sportsman sportsman;
+    @ManyToOne
     public Competition competition;
     public int prizePlace;
 
     public SportsmanCompetition() {
     }
 
-    public SportsmanCompetition(int id, Sportsman sportsman, Competition competition, int prizePlace) {
-        this.id = id;
+    public SportsmanCompetition(Sportsman sportsman, Competition competition, int prizePlace) {
         this.sportsman = sportsman;
         this.competition = competition;
         this.prizePlace = prizePlace;
     }
+    /*public SportsmanCompetition(int id, Sportsman sportsman, Competition competition, int prizePlace) {
+        this.id = id;
+        this.sportsman = sportsman;
+        this.competition = competition;
+        this.prizePlace = prizePlace;
+    }*/
 
     public int getId() {
         return id;

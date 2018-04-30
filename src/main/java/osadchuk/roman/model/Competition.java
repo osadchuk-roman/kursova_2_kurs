@@ -1,26 +1,44 @@
 package osadchuk.roman.model;
 
-import java.sql.Date;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
+import java.sql.Date;
+@Entity
+@Table(name = "competition")
+@EntityListeners(AuditingEntityListener.class)
 public class Competition {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     public String name;
     public Date date;
+    @ManyToOne
     public Organizer organizer;
+    @ManyToOne
     public SportBuilding sportBuilding;
+    @ManyToOne
     public KindOfSport kindOfSport;
 
     public Competition() {
     }
 
-    public Competition(int id, String name, Date date, Organizer organizer, SportBuilding sportBuilding, KindOfSport kindOfSport) {
-        this.id = id;
+    public Competition(String name, Date date, Organizer organizer, SportBuilding sportBuilding,
+                       KindOfSport kindOfSport) {
         this.name = name;
         this.date = date;
         this.organizer = organizer;
         this.sportBuilding = sportBuilding;
         this.kindOfSport = kindOfSport;
     }
+    /*public Competition(int id, String name, Date date, Organizer organizer, SportBuilding sportBuilding, KindOfSport kindOfSport) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.organizer = organizer;
+        this.sportBuilding = sportBuilding;
+        this.kindOfSport = kindOfSport;
+    }*/
 
     public int getId() {
         return id;

@@ -1,15 +1,24 @@
 package osadchuk.roman.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "pool")
+@EntityListeners(AuditingEntityListener.class)
 public class Pool {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+    @ManyToOne
     public SportBuilding sportBuilding;
     public int depth;
     public int width;
     public int length;
     public int maxHeight;
 
-    public Pool(int id, SportBuilding sportBuilding, int depth, int width, int length, int maxHeight) {
-        this.id = id;
+    public Pool(SportBuilding sportBuilding, int depth, int width, int length, int maxHeight) {
         this.sportBuilding = sportBuilding;
         this.depth = depth;
         this.width = width;
@@ -17,6 +26,15 @@ public class Pool {
         this.maxHeight = maxHeight;
     }
 
+    /*public Pool(int id, SportBuilding sportBuilding, int depth, int width, int length, int maxHeight) {
+            this.id = id;
+            this.sportBuilding = sportBuilding;
+            this.depth = depth;
+            this.width = width;
+            this.length = length;
+            this.maxHeight = maxHeight;
+        }
+    */
     public Pool() {
     }
 

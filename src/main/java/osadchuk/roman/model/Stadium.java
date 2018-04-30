@@ -1,7 +1,17 @@
 package osadchuk.roman.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "stadium")
+@EntityListeners(AuditingEntityListener.class)
 public class Stadium {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+    @ManyToOne
     public SportBuilding sportBuilding;
     public int capacity;
     public double fieldArea;
@@ -11,7 +21,15 @@ public class Stadium {
     public Stadium() {
     }
 
-    public Stadium(int id, SportBuilding sportBuilding, int capacity, double fieldArea,
+    public Stadium(SportBuilding sportBuilding, int capacity, double fieldArea,
+                   boolean presenceOfPathForRunning, boolean presenceOfGymnasticZone) {
+        this.sportBuilding = sportBuilding;
+        this.capacity = capacity;
+        this.fieldArea = fieldArea;
+        this.presenceOfPathForRunning = presenceOfPathForRunning;
+        this.presenceOfGymnasticZone = presenceOfGymnasticZone;
+    }
+/*public Stadium(int id, SportBuilding sportBuilding, int capacity, double fieldArea,
                    boolean presenceOfPathForRunning, boolean presenceOfGymnasticZone) {
         this.id = id;
         this.sportBuilding = sportBuilding;
@@ -19,7 +37,7 @@ public class Stadium {
         this.fieldArea = fieldArea;
         this.presenceOfPathForRunning = presenceOfPathForRunning;
         this.presenceOfGymnasticZone = presenceOfGymnasticZone;
-    }
+    }*/
 
     public int getId() {
         return id;

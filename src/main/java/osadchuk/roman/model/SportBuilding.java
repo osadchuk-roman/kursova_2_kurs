@@ -1,8 +1,18 @@
 package osadchuk.roman.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "sport_building")
+@EntityListeners(AuditingEntityListener.class)
 public class SportBuilding {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
     public String name;
+    @ManyToOne
     public TypeOfSportBuilding typeOfSportBuilding;
     public String phone;
     public String address;
@@ -10,13 +20,19 @@ public class SportBuilding {
     public SportBuilding() {
     }
 
-    public SportBuilding(int id, String name, TypeOfSportBuilding typeOfSportBuilding, String phone, String address) {
-        this.id = id;
+    public SportBuilding(String name, TypeOfSportBuilding typeOfSportBuilding, String phone, String address) {
         this.name = name;
         this.typeOfSportBuilding = typeOfSportBuilding;
         this.phone = phone;
         this.address = address;
     }
+    /* public SportBuilding(int id, String name, TypeOfSportBuilding typeOfSportBuilding, String phone, String address) {
+        this.id = id;
+        this.name = name;
+        this.typeOfSportBuilding = typeOfSportBuilding;
+        this.phone = phone;
+        this.address = address;
+    }*/
 
     public int getId() {
         return id;

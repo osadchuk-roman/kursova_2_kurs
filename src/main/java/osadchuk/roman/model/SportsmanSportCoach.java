@@ -1,22 +1,42 @@
 package osadchuk.roman.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "sportsman_sport_coach")
+@EntityListeners(AuditingEntityListener.class)
 public class SportsmanSportCoach {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+    @ManyToOne
     public Sportsman sportsman;
+    @ManyToOne
     public KindOfSport kindOfSport;
+    @ManyToOne
     public SportCategory sportCategory;
+    @ManyToOne
     public Coach coach;
 
     public SportsmanSportCoach() {
     }
 
-    public SportsmanSportCoach(int id, Sportsman sportsman, KindOfSport kindOfSport, SportCategory sportCategory, Coach coach) {
-        this.id = id;
+    public SportsmanSportCoach(Sportsman sportsman, KindOfSport kindOfSport,
+                               SportCategory sportCategory, Coach coach) {
         this.sportsman = sportsman;
         this.kindOfSport = kindOfSport;
         this.sportCategory = sportCategory;
         this.coach = coach;
     }
+    /*public SportsmanSportCoach(int id, Sportsman sportsman, KindOfSport kindOfSport, SportCategory sportCategory, Coach coach) {
+        this.id = id;
+        this.sportsman = sportsman;
+        this.kindOfSport = kindOfSport;
+        this.sportCategory = sportCategory;
+        this.coach = coach;
+    }*/
 
     public int getId() {
         return id;
