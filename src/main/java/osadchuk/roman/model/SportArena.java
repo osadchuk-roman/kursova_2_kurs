@@ -14,9 +14,9 @@ public class SportArena {
     @ManyToOne
     public SportBuilding sportBuilding;
     public int capacity;
-    public boolean presenceOfGymnasticZone;
-    public boolean presenceOfBoxingRing;
-    public boolean presenceOfMatirialArtsZone;
+    public Boolean presenceOfGymnasticZone;
+    public Boolean presenceOfBoxingRing;
+    public Boolean presenceOfMatirialArtsZone;
 
     public SportArena() {
     }

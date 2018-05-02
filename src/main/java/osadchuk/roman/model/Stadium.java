@@ -15,8 +15,8 @@ public class Stadium {
     public SportBuilding sportBuilding;
     public int capacity;
     public double fieldArea;
-    public boolean presenceOfPathForRunning;
-    public boolean presenceOfGymnasticZone;
+    public Boolean presenceOfPathForRunning;
+    public Boolean presenceOfGymnasticZone;
 
     public Stadium() {
     }

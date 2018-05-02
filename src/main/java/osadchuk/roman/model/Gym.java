@@ -13,9 +13,9 @@ public class Gym {
     public int id;
     @ManyToOne
     public SportBuilding sportBuilding;
-    public boolean presenceOfCardioZone;
-    public boolean presenceOfCrossfitZone;
-    public boolean presenceOfBoxingRing;
+    public Boolean presenceOfCardioZone;
+    public Boolean presenceOfCrossfitZone;
+    public Boolean presenceOfBoxingRing;
 
     public Gym() {
     }
