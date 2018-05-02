@@ -1,4 +1,4 @@
-package osadchuk.roman.service;
+package osadchuk.roman.service.kindOfSport;
 
 import osadchuk.roman.model.KindOfSport;
 

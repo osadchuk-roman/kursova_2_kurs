@@ -1,11 +1,9 @@
 package osadchuk.roman.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import osadchuk.roman.model.KindOfSport;
-import osadchuk.roman.service.KindOfSportService;
+import osadchuk.roman.service.kindOfSport.KindOfSportService;
 
 import java.util.List;
 
@@ -28,5 +26,17 @@ public class KindOfSportController {
     @RequestMapping("/kind_of_sport/delete")
     public void delete(@RequestParam int id){
         service.delete(id);
+    }
+
+    @PostMapping("/kind_of_sport/insert")
+    public KindOfSport insert(@RequestBody KindOfSport kindOfSport){
+
+        return service.insert(kindOfSport);
+    }
+
+    @PostMapping("/kind_of_sport/update")
+    public KindOfSport update(@RequestBody KindOfSport kindOfSport){
+
+        return service.update(kindOfSport);
     }
 }
