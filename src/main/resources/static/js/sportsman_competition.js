@@ -3,9 +3,13 @@ var app = angular.module("kursova", [])
 app.controller("AppCtrl", function ($http, $scope) {
 
     $scope.sportsman_competition = [];
+    var accessTime = performance.now();
     $http.get('http://localhost:8080/api/sportsman_competition').then(function (response){
         $scope.sportsman_competition=response.data;
         console.log(response);
+        accessTime=performance.now()-accessTime;
+        accessTime = Math.round(accessTime*100)/100;
+        window.alert('Час доступу до бази даних: '+accessTime+'мс');
     });
     this.del_sportsman_competition= function del(id) {
         $http.get('/api/sportsman_competition/del?id='+id).then(function (response){

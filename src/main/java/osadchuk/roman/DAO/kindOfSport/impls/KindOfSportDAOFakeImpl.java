@@ -19,45 +19,6 @@ public class KindOfSportDAOFakeImpl implements IKindOfSportDAO {
     //DataStorageFake dataStorage;
     DataStorageJDBC dataStorage;
 
-    /*@Override
-    public KindOfSport insertKindOfSport(KindOfSport kindOfSport) {
-        dataStorage.getKindsOfSports().add(kindOfSport);
-        return kindOfSport;
-    }
-
-    @Override
-    public KindOfSport getKindOfSport(int id) {
-        return dataStorage.getKindsOfSports().get(id);
-    }
-
-    @Override
-    public KindOfSport updateKindOfSport(KindOfSport kindOfSport) {
-        for (KindOfSport k : dataStorage.getKindsOfSports()) {
-            if(k.getId() == kindOfSport.getId()){
-                k.setName(kindOfSport.getName());
-                break;
-            }
-        }
-        return kindOfSport;
-    }
-
-    @Override
-    public KindOfSport deleteKindOfSport(int id) {
-        KindOfSport kindOfSport = dataStorage.getKindsOfSports()
-                .stream()
-                .filter(el -> el.getId() == id)
-                .findFirst()
-                .get();
-        int index = dataStorage.getKindsOfSports().indexOf(kindOfSport);
-        dataStorage.getKindsOfSports().remove(index);
-        return kindOfSport;
-    }
-
-    @Override
-    public List<KindOfSport> getAll() throws SQLException {
-        return dataStorage.getKindsOfSports();
-    }
-*/
 
     @Override
     public KindOfSport insertKindOfSport(KindOfSport kindOfSport) throws SQLException {
@@ -144,4 +105,44 @@ public class KindOfSportDAOFakeImpl implements IKindOfSportDAO {
         }
         return list;
     }
+
+    /*@Override
+    public KindOfSport insertKindOfSport(KindOfSport kindOfSport) {
+        dataStorage.getKindsOfSports().add(kindOfSport);
+        return kindOfSport;
+    }
+
+    @Override
+    public KindOfSport getKindOfSport(int id) {
+        return dataStorage.getKindsOfSports().get(id);
+    }
+
+    @Override
+    public KindOfSport updateKindOfSport(KindOfSport kindOfSport) {
+        for (KindOfSport k : dataStorage.getKindsOfSports()) {
+            if(k.getId() == kindOfSport.getId()){
+                k.setName(kindOfSport.getName());
+                break;
+            }
+        }
+        return kindOfSport;
+    }
+
+    @Override
+    public KindOfSport deleteKindOfSport(int id) {
+        KindOfSport kindOfSport = dataStorage.getKindsOfSports()
+                .stream()
+                .filter(el -> el.getId() == id)
+                .findFirst()
+                .get();
+        int index = dataStorage.getKindsOfSports().indexOf(kindOfSport);
+        dataStorage.getKindsOfSports().remove(index);
+        return kindOfSport;
+    }
+
+    @Override
+    public List<KindOfSport> getAll() throws SQLException {
+        return dataStorage.getKindsOfSports();
+    }
+*/
 }

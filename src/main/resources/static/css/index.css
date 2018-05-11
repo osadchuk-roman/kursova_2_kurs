@@ -64,7 +64,63 @@ body {
     cursor:pointer;
 }
 
-.btn-modal-ok{
+.button-main {
+    width: 300px;
+    background-color:#68d651;
+    border-radius:16px;
+    font-size:36px;
+    border:2px solid #20c931;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    padding:12px 31px;
+}
+.button-main:hover {
+    background-color:#8ced57;
+}
+.button-main:active {
+
+    position:relative;
+    top:1px;
+}
+
+
+.my-th-selected {
+    text-align: center;
+    font-size:14px;
+    border: 2px solid #20c931;
+    background: #8ced57;
+    /*background: #fff5d8;*/
+    color: #ffffff;
+}
+.my-th {
+    text-align: center;
+    font-size:14px;
+    border: 2px solid #20c931;
+    background: #68d651;
+    /*background: #fff5d8;*/
+    color: #ffffff;
+}
+.my-th:hover{
+    background: #8ced57;
+}
+/*.button-main{
+    background-color: #90ff7a;
+    text-align: center;
+    cursor: pointer;
+}
+.button-main:hover{
+    background-color: #71d66b;
+    text-align: center;
+    text-decoration-color: white;
+    cursor: pointer;
+}*/
+
+
+
+
+
+/*.btn-modal-ok{
     background-color: #90ff7a;
     color: white;
     cursor:pointer;
@@ -85,4 +141,4 @@ body {
 .btn-del:hover {
     background: #ff0000;
     text-decoration: none;
-}
+}*/
